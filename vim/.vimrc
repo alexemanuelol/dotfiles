@@ -63,6 +63,9 @@ set wildmode=longest:list,full
 noremap <silent><leader>sl :set list!<CR>
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
+" Remove trailing whitespace at the end of every line
+noremap <silent><leader>w :%s/\s\+$//g<CR>
+
 " For Windows
 "let g:gitgutter_git_executable = 'C:\Program Files (x86)\Git\bin\git.exe'
 
@@ -71,7 +74,7 @@ set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:�
 " PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off                    " Required for vundle
-set rtp+=~/vimfiles/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'   " Required
@@ -159,7 +162,10 @@ nnoremap <silent><leader>rc :source ~/.vimrc<CR>:echo "Config reloaded"<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CODE SNIPPET COMMANDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType cpp inoremap ;co std::cout<Space><<<Space>f<Space><<<Space> std::endl;<Esc>Ffcw
+autocmd FileType cpp inoremap ;co std::cout << f << std::endl;<ESC>Ffcw
+autocmd FileType c inoremap ;co printf(q);<ESC>0fqcw
+
+autocmd FileType cpp,c inoremap ;fl for (int i = 0; i < q; i++)<CR>{<CR><CR>}<CR><ESC>kkkk0fqcw
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,7 +173,7 @@ autocmd FileType cpp inoremap ;co std::cout<Space><<<Space>f<Space><<<Space> std
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " ### PLUGINS ###
-" git clone https://github.com/VundleVim/Vundle.vim.git $HOME/vimfiles/bundle/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 " Run :PluginInstall or vim +PluginInstall +qall
 "
 "
