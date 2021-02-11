@@ -14,7 +14,7 @@
 set nocompatible                " Don't try to be vi compatible
 set encoding=UTF-8              " Encoding
 set mouse=a                     " Allow mouse click to move cursor
-"set ttymouse=                   " Set this to the name of the terminal that supports mouse codes.
+"set ttymouse=                  " Set this to the name of the terminal that supports mouse codes.
 set ttyfast                     " Terminal acceleration
 set visualbell                  " Blink cursor on error instead of beeping
 set number                      " Show line number
@@ -52,6 +52,7 @@ set secure                      " Prohibit .vimrc files to execute shell, create
 "set ruler                       " Display navigation numbers in statusline
 set laststatus=2                " Always show statusline (2 = always)
 set showtabline=2               " Always show tabline, even if there's just one tab
+set guioptions-=L               " To avoid window window moving
 
 let mapleader=" "               " Use space as <leader> key
 
@@ -59,15 +60,21 @@ let mapleader=" "               " Use space as <leader> key
 set wildmenu
 set wildmode=longest:list,full
 
-" Show hidden characters
-noremap <silent><leader>sl :set list!<CR>
+" Hidden characters
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+
+" Switch back to normal mode after a few seconds, here 25 sec
+au CursorHoldI * stopinsert
+au InsertEnter * let updaterestore=&updatetime | set updatetime=25000
+au InsertLeave * let &updatetime=updaterestore
 
 " Remove trailing whitespace at the end of every line
 noremap <silent><leader>w :%s/\s\+$//g<CR>
 
-" For Windows
-"let g:gitgutter_git_executable = 'C:\Program Files (x86)\Git\bin\git.exe'
+" Git bin for Windows
+if has('win32') || has('win32unix')
+    let g:gitgutter_git_executable = 'C:\Program Files (x86)\Git\bin\git.exe'
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,8 +91,7 @@ Plugin 'morhetz/gruvbox'                    " Colorscheme
 Plugin 'vim-airline/vim-airline'            " Sexy statusline
 Plugin 'vim-airline/vim-airline-themes'     " Sexy statusline themes
 Plugin 'airblade/vim-gitgutter'             " Git diff in the sign column
-" https://github.com/airblade/vim-gitgutter for git diffs in signcolumn
-" nerdtree for file explorer
+Plugin 'scrooloose/nerdtree'                " File Explorer
 " https://github.com/neoclide/coc.nvim make vim smart as VSCode
 
 call vundle#end()
@@ -101,7 +107,7 @@ syntax on                               " Turn on syntax highlighting
 set t_Co=256                            " Set 256 colors
 set guifont=Roboto_Mono_SemiBold:h9     " https://fonts.google.com/specimen/Roboto+Mono
 colorscheme gruvbox                     " Use gruvbox as colorscheme
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark                     " Set the background color
 set termguicolors                       " Uses your colorscheme and init
@@ -115,10 +121,9 @@ highlight Pmenu guibg=#b8bb26 ctermbg=100
 highlight PmenuSel guibg=#3a3a3a ctermbg=237
 
 " Settings for sexy statusline (airline)
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#branch#enabled=1
 let g:airline_theme='wombat'
-"let g:airline_section_a = airline#section#create(['branch'])
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -149,8 +154,27 @@ highlight Search ctermbg=Yellow ctermfg=Black
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTREE SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=1                " Show hidden files and directories
+
+map <F12> :NERDTreeToggle<CR>           " Toggle NerdTree
+
+" Start up nerdtree automatically if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close vim if nerdtree is the only window left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SHORTCUTS/REMAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Scrolling faster
+nnoremap <C-Down> 3<C-e>
+nnoremap <C-Up> 3<C-y>
+
 " Yank/Paste to/from register/clipboard
 vnoremap <silent><leader>y "+y<CR>:echo "Yanked"<CR>
 nnoremap <silent><leader>p "+p
@@ -158,12 +182,20 @@ nnoremap <silent><leader>p "+p
 " Reload config
 nnoremap <silent><leader>rc :source ~/.vimrc<CR>:echo "Config reloaded"<CR>
 
+" Toggle hidden characters
+noremap <silent><leader>sl :set list!<CR>
+
+" Tab handling
+map <C-Left> <ESC>:tabprev<CR>
+map <C-Right> <ESC>:tabnext<CR>
+map <C-t> <ESC>:tabnew<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CODE SNIPPET COMMANDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType cpp inoremap ;co std::cout << f << std::endl;<ESC>Ffcw
-autocmd FileType c inoremap ;co printf(q);<ESC>0fqcw
+autocmd FileType c inoremap ;pf printf(q);<ESC>0fqcw
 
 autocmd FileType cpp,c inoremap ;fl for (int i = 0; i < q; i++)<CR>{<CR><CR>}<CR><ESC>kkkk0fqcw
 
@@ -180,4 +212,8 @@ autocmd FileType cpp,c inoremap ;fl for (int i = 0; i < q; i++)<CR>{<CR><CR>}<CR
 " ### Good to know ###
 " :retab - To convert all tabs to spaces in a file
 " Use '\C' for case sensitive in searches
+" <C-w>s horizontal split, <C-w>v vertical split
+" <C-w-Left> to move to left split, <C-w-Right> to move to right split
+"
+"
 "
