@@ -93,6 +93,7 @@ Plugin 'vim-airline/vim-airline-themes'     " Sexy statusline themes
 Plugin 'airblade/vim-gitgutter'             " Git diff in the sign column
 Plugin 'scrooloose/nerdtree'                " File Explorer
 " https://github.com/neoclide/coc.nvim make vim smart as VSCode
+" Add clang format
 
 call vundle#end()
 filetype plugin indent on       " Enable
@@ -215,5 +216,10 @@ autocmd FileType cpp,c inoremap ;fl for (int i = 0; i < q; i++)<CR>{<CR><CR>}<CR
 " <C-w>s horizontal split, <C-w>v vertical split
 " <C-w-Left> to move to left split, <C-w-Right> to move to right split
 "
-"
+" ### TODO ###
+" - Fix clang format Plugin
+" - map search and replace
+" - You Complete Me Plugin
+" -     YCMCompleter
+"       nmap <leader>f :YcmCompleter FixIt<cr>
 "
