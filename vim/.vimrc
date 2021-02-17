@@ -76,6 +76,9 @@ if has('win32') || has('win32unix')
     let g:gitgutter_git_executable = 'C:\Program Files (x86)\Git\bin\git.exe'
 endif
 
+" Clang-Format
+map <silent><F8> <ESC>:ClangFormat<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
@@ -92,8 +95,8 @@ Plugin 'vim-airline/vim-airline'            " Sexy statusline
 Plugin 'vim-airline/vim-airline-themes'     " Sexy statusline themes
 Plugin 'airblade/vim-gitgutter'             " Git diff in the sign column
 Plugin 'scrooloose/nerdtree'                " File Explorer
+Plugin 'rhysd/vim-clang-format'             " Clang-Format
 " https://github.com/neoclide/coc.nvim make vim smart as VSCode
-" Add clang format
 
 call vundle#end()
 filetype plugin indent on       " Enable
@@ -217,7 +220,6 @@ autocmd FileType cpp,c inoremap ;fl for (int i = 0; i < q; i++)<CR>{<CR><CR>}<CR
 " <C-w-Left> to move to left split, <C-w-Right> to move to right split
 "
 " ### TODO ###
-" - Fix clang format Plugin
 " - map search and replace
 " - You Complete Me Plugin
 " -     YCMCompleter
