@@ -14,7 +14,7 @@
     ////////////////////////////////////////////////////////////////////////////
     //  EXTENSIONS
     ////////////////////////////////////////////////////////////////////////////
-    "extension-manager.extensions": [
+    "extension-manager.extensions": [       // Use install_extensions.sh to install the extensions
         "vscodevim.vim",                    // Vim emulation for VS Code
         "ms-vscode.cpptools",               // C/C++ IntelliSense, debugging, and code browsing
         "ms-python.python",                 // Linting, debugging, intelliSense, code formatting etc...
@@ -26,7 +26,6 @@
         "eamodio.gitlens",                  // Visualize code authorship via git blame etc...
         "donjayamanne.githistory",          // View git log, file history, compare branches or commits
         "johnpapa.vscode-peacock",          // Different environment colors when multiple instances
-        ""
     ],
 
     ////////////////////////////////////////////////////////////////////////////
@@ -147,7 +146,7 @@
         "ruby":     "C:\\Ruby30-x64\\bin\\ruby.exe",
         "html":     "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\"",
         //"c":        "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
-    }
+    },
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -213,7 +212,7 @@
             "bold":             false,
             "italic":           false
         }
-    ]
+    ],
 
 
     ////////////////////////////////////////////////////////////////////////////
