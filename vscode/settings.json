@@ -1,0 +1,180 @@
+//
+//  ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗        ██╗███████╗ ██████╗ ███╗   ██╗
+//  ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝        ██║██╔════╝██╔═══██╗████╗  ██║
+//  ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗        ██║███████╗██║   ██║██╔██╗ ██║
+//  ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║   ██   ██║╚════██║██║   ██║██║╚██╗██║
+//  ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║██╗╚█████╔╝███████║╚██████╔╝██║ ╚████║
+//  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═╝ ╚════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
+//
+//  For Visual Studio Code
+//
+//  The JSON format doesn't support comments but VS Code ignores '//'
+
+{
+    ////////////////////////////////////////////////////////////////////////////
+    //  EXTENSIONS
+    ////////////////////////////////////////////////////////////////////////////
+    "extension-manager.extensions": [
+        "vscodevim.vim",                    // Vim emulation for VS Code
+        "ms-vscode.cpptools",               // C/C++ IntelliSense, debugging, and code browsing
+        "ms-python.python",                 // Linting, debugging, intelliSense, code formatting etc...
+        "xaver.clang-format",               // Clang-Format
+        "vscode-icons-team.vscode-icons",   // Sexy icons for folders and files
+        "formulahendry.code-runner",        // Makes it possible to run
+        "jdinhlife.gruvbox",                // Gruvbox color scheme
+        "aaron-bond.better-comments",       // Improve code commenting with alert, info, TODOs, etc...
+        "shardulm94.trailing-spaces",       // Highlight trailing spaces and delete them in a flash!
+        "eamodio.gitlens",                  // Visualize code authorship via git blame etc...
+        "donjayamanne.githistory",          // View git log, file history, compare branches or commits
+        "johnpapa.vscode-peacock",          // Different environment colors when multiple instances
+        ""
+        // TODO
+        // Git
+        //
+    ],
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  GENERAL SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    "editor.fastScrollSensitivity": 3,
+    "editor.hover.delay": 0,
+    "editor.fontFamily": "Hack", // https://github.com/source-foundry/Hack
+    "editor.fontSize": 9
+
+
+    "editor.tabSize": 3,
+    "editor.wordWrapColumn": 120,
+    "files.associations": {
+        "*.tst": "XML",
+        "*.config": "XML",
+        "*.tmpl": "XML"
+    },
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  VIM EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visualline": "block",
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.path": "C:\\Users\\A8Q62ZZ\\.vimrc",
+    "vim.vimrc.enable": true,
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  C/C++ EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  PYTHON EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  CLANG-FORMAT EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "editor.formatOnSave": true
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  ICON EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  CODE RUNNER EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  GRUVBOX THEME EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  BETTER COMMENTS EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+    "better-comments.tags": [
+        {
+            // Alert/ Warning
+            "tag":              "!",
+            "color":            "#FF2D00",
+            "strikethrough":    false,
+            "underline":        false,
+            "backgroundColor":  "transparent",
+            "bold":             false,
+            "italic":           false
+        },
+        {
+            // Question
+            "tag":              "?",
+            "color":            "#3498DB",
+            "strikethrough":    false,
+            "underline":        false,
+            "backgroundColor":  "transparent",
+            "bold":             false,
+            "italic":           false
+        },
+        {
+            // 'Remove this comment'
+            "tag":              "//",
+            "color":            "#474747",
+            "strikethrough":    true,
+            "underline":        false,
+            "backgroundColor":  "transparent",
+            "bold":             false,
+            "italic":           false
+        },
+        {
+            // TODOs
+            "tag":              "todo",
+            "color":            "#FF8C00",
+            "strikethrough":    false,
+            "underline":        false,
+            "backgroundColor":  "transparent",
+            "bold":             false,
+            "italic":           false
+        },
+        {
+            // Important information is highlighted
+            "tag":              "*",
+            "color":            "#98C379",
+            "strikethrough":    false,
+            "underline":        false,
+            "backgroundColor":  "transparent",
+            "bold":             false,
+            "italic":           false
+        }
+    ]
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  TRAILING SPACES EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  GIT LENS EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  GIT HISTORY EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //  PEACOCK EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //   EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //   EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    //   EXTENSION SETTINGS
+    ////////////////////////////////////////////////////////////////////////////
+
+
+}
