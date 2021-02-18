@@ -18,7 +18,6 @@
         "vscodevim.vim",                    // Vim emulation for VS Code
         "ms-vscode.cpptools",               // C/C++ IntelliSense, debugging, and code browsing
         "ms-python.python",                 // Linting, debugging, intelliSense, code formatting etc...
-        "xaver.clang-format",               // Clang-Format
         "vscode-icons-team.vscode-icons",   // Sexy icons for folders and files
         "formulahendry.code-runner",        // Makes it possible to run
         "jdinhlife.gruvbox",                // Gruvbox color scheme
@@ -28,73 +27,141 @@
         "donjayamanne.githistory",          // View git log, file history, compare branches or commits
         "johnpapa.vscode-peacock",          // Different environment colors when multiple instances
         ""
-        // TODO
-        // Git
-        //
     ],
 
     ////////////////////////////////////////////////////////////////////////////
     //  GENERAL SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
-    "editor.fastScrollSensitivity": 3,
-    "editor.hover.delay": 0,
-    "editor.fontFamily": "Hack", // https://github.com/source-foundry/Hack
-    "editor.fontSize": 9
+    "editor.fastScrollSensitivity":             3,          // Scroll 3 rows when holding <ALT>
+    "editor.mouseWheelScrollSensitivity":       3,          // Scroll 3 rows when mouse scroll
+    "editor.hover.delay":                       0,          // Delay in milliseconds after which the hover is shown
+    "editor.fontFamily":                        "Hack",     // https://github.com/source-foundry/Hack
+    "editor.fontSize":                          12,         // Font size
+    "editor.fontWeight":                        "bold",     // Font weight
+    "editor.inlineHints.fontSize":              0,          // When 0, 90% of fontSize is used
+    "editor.inlineHints.fontFamily":            "Hack",     // Font family for inline hints
+    "editor.detectIndentation":                 true,       // Alter tabSize and insertSpaces based on content of file
+    "editor.insertSpaces":                      true,       // Expand tabs to spaces
+    "editor.tabSize":                           4,          // Number of spaces a tab is equal to
+    "editor.lineNumbers":                       "relative", // Display mode for line number, can be 'on' for normal
+    "editor.mouseWheelZoom":                    true,       // Enable font zoom when holding <CTRL>
+    "editor.smoothScrolling":                   true,       // Enable smooth scroll
+    "editor.cursorSmoothCaretAnimation":        true,       // Enable smooth cursor
+    "editor.wordWrapColumn":                    120,        // Wrap at 120
+    "editor.wordWrap":                          "bounded",  // Wraps at viewport and wordWrapColumn
+    "editor.cursorSurroundingLines":            10,         // Scroll offset at top and bottom of screen
+    "editor.cursorSurroundingLinesStyle":       "all",      // Always enforce
+    "editor.minimap.enabled":                   false,      // Remove the minimap on the right
 
+    "editor.codeLensFontFamily":                "Hack",     // Font for CodeLens
+    "diffEditor.codeLens":                      true,       // Show CodeLens
 
-    "editor.tabSize": 3,
-    "editor.wordWrapColumn": 120,
-    "files.associations": {
-        "*.tst": "XML",
-        "*.config": "XML",
-        "*.tmpl": "XML"
+    "files.associations": {                                 // Default syntax for filetypes
+        "*.tst":        "xml",
+        "*.config":     "xml",
+        "*.tmpl":       "xml",
+        "*.cfg":        "ini"
     },
+    "files.eol": "\n",                                      // Default End of Line character
+    "files.trimFinalNewlines":                  true,       // Trim newlines at bottom on save
+    "files.trimTrailingWhitespace":             false,      // Trim trailing whitespace on save
+
+    "workbench.commandPalette.history":         1000,       // Command history
+    "workbench.list.smoothScrolling":           true,       // Smooth scrolling in workbench lists
+
+    "workbench.startupEditor":                  "none",     // Remove welcome page at startup
+    "workbench.editor.highlightModifiedTabs":   true,       // Highlight modified files
+
+    "files.exclude": {                                      // Exclude folders/ files
+        "**/*.git":     true,
+        "**/*.build":   true,
+        "**/*.log":     true,
+        "**/*.evt":     true
+    },
+
+    "search.exclude": {                                     // Exclude folders/ files in fulltext searches
+        ".build/**":    true
+    },
+
+    "search.showLineNumbers":                   true,       // Show the line numnber of the search result
+
+    "debug.console.fontFamily":                 "Hack",     // Font family for console
+    "debug.console.fontSize":                   12,         // Font size
+
+    "extensions.ignoreRecommendations":         true,       // Remove extension recommendations
+
+    "terminal.integrated.cursorStyle":          "line",     // Use line as cursor style for terminal
+
+    "terminal.integrated.fastScrollSensitivity":3,          // Terminal fast scroll
+    "terminal.integrated.fontSize":             12,         // Font size for terminal
+    "terminal.integrated.fontWeight":           "bold",     // Font weight
+
 
     ////////////////////////////////////////////////////////////////////////////
     //  VIM EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
-    "vim.cursorStylePerMode.insert": "block",
-    "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.replace": "block",
-    "vim.cursorStylePerMode.visual": "block",
-    "vim.cursorStylePerMode.visualblock": "block",
-    "vim.cursorStylePerMode.visualline": "block",
-    "vim.useSystemClipboard": true,
-    "vim.vimrc.path": "C:\\Users\\A8Q62ZZ\\.vimrc",
-    "vim.vimrc.enable": true,
+    "vim.debug.silent":                         true,       // Suppress logs
+    "vim.leader":                               " ",        // Leader key
+    "vim.searchHighlightColor":                 "yellow",   // Search background color
+    "vim.searchHighlightTextColor":             "black",    // Search text color
+    "vim.useSystemClipboard":                   true,       // Use system clipboard for unnamed register
+    "vim.textwidth":                            120,        // Text width
+    "vim.showcmd":                              true,       // Shows partial commands on the last line
+    "vim.smartRelativeLine":                    true,       // Use relative line number
+    "vim.hlsearch":                             true,       // Show all matches of the most recent search pattern
+    "vim.history":                              1000,       // Command history
+    "vim.vimrc.enable":                         true,       // Enable .vimrc (Only remaps are supported)
+    "vim.vimrc.path": "C:\\Users\\Alexander\\.vimrc",       // Path to .vimrc
+
 
     ////////////////////////////////////////////////////////////////////////////
     //  C/C++ EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
+    "editor.formatOnSave":                      true,       // Code format on save
+
+    // Path to Clang-Format bin
+    "C_Cpp.clang_format_path":" C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+
     ////////////////////////////////////////////////////////////////////////////
     //  PYTHON EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    //  CLANG-FORMAT EXTENSION SETTINGS
-    ////////////////////////////////////////////////////////////////////////////
-
-    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
-    "editor.formatOnSave": true
 
     ////////////////////////////////////////////////////////////////////////////
     //  ICON EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
+    // Setting the icon theme
+    "workbench.iconTheme":                      "vscode-icons",
+
+
     ////////////////////////////////////////////////////////////////////////////
     //  CODE RUNNER EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
+
+    "code-runner.executorMap": {                            // Map language to binary executable
+        "python":   "python",
+        "ruby":     "C:\\Ruby30-x64\\bin\\ruby.exe",
+        "html":     "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\"",
+        //"c":        "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////
     //  GRUVBOX THEME EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
+    // Setting the color theme
+    "workbench.colorTheme":                     "Gruvbox Dark Hard",
+
+
     ////////////////////////////////////////////////////////////////////////////
     //  BETTER COMMENTS EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
+
     "better-comments.tags": [
         {
             // Alert/ Warning
@@ -148,33 +215,34 @@
         }
     ]
 
+
     ////////////////////////////////////////////////////////////////////////////
     //  TRAILING SPACES EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
+
+    "trailing-spaces.backgroundColor":          "rgba(255,0,0,0.3)",
 
     ////////////////////////////////////////////////////////////////////////////
     //  GIT LENS EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
+
     ////////////////////////////////////////////////////////////////////////////
     //  GIT HISTORY EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
+
 
     ////////////////////////////////////////////////////////////////////////////
     //  PEACOCK EXTENSION SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    //   EXTENSION SETTINGS
-    ////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////
-    //   EXTENSION SETTINGS
+    //   NEW SETTINGS
     ////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////
-    //   EXTENSION SETTINGS
-    ////////////////////////////////////////////////////////////////////////////
+    // Placeholder so that new settings end up at the bottom
+    "placeholder":                              false
 
 
 }
