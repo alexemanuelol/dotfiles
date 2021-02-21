@@ -1,6 +1,7 @@
 [user]
     name = Alexander Emanuelsson
     email = alexander.emanuelsson94@gmail.com
+    #email = alexander.emanmuelsson@mmm.com
     username = alexemanuelol
 [core]
     editor = vim # User vim as default editor
@@ -37,277 +38,58 @@
 [push]
     default = current # Push current branch to update a branch with the same name on the receiving end
 [alias]
+    aliases = !git config -l | grep alias | cut -c 7-
+    ##########
     a = add
     aa = add --all
-
+    ##########
     b = branch
     bd = branch -d # Delete merged branch
     bD = branch -D # Force delete branch
-
+    ##########
     c = commit
     ca = commit -a
     cm = commit -m
     cma = commit -ma
     cam = commit --amend
     camn = commit --amend --no-edit
-
+    ##########
     co = checkout
     cob = checkout -b
     com = checkout master
     cor = checkout .
-
+    ##########
+    cl = clone
+    ##########
     d = diff
+	dfc = diff -C --color-words
     dt = difftool
-
-
-
+    ##########
     f = fetch --all
+    ##########
+	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+    lgg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+    lgt = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order
+    ##########
+    m = merge
+    ##########
+    pl = pull
+    plom = pull origin master
+    ##########
+    ps = push
+    psf = push --fource-with-lease
+    ##########
+    rb = rebase
+    rbom = rebase origin master
+    ##########
+    s = status
+    st = stash
+    stp = stash pop
+    stl = stash list
+    ##########
+    who = shortlog -s -- # Commits per contributor
+	whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
+    ##########
 
-    st = status
-
-
-
-
-
-
-
-    ; DAVID
-    d = diff
-    f = fetch -p # Fetch and prune previously tracked branches
-    st = status
-    pu = push --force-with-lease
-    hist = log --decorate --oneline --graph --date=short --all
-    h = hist
-    dump = cat-file -p
-    ;;;;
-
-
-
-    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort    # list all aliases
-	cb = !git branch | grep ^* | cut -d' ' -f2
-	branch-name = !git cb    # alias to "cb" alias
-	st = status
-	cp = cherry-pick
-	df = diff -C --color-words
-	pl = !git pull --rebase origin $(git cb)
-	ps = !git push origin $(git cb)
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
-	who = shortlog -s --
-	push-hash = !sh -c 'git push origin $1:refs/heads/$(git cb)' -    # requires a SHA or the remote branch will be deleted!!
-	reset-tags = "!f() { git tag -l | xargs git tag -d; git fetch; }; f"
-	cloner = clone --recursive
-	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
-	save = stash save -u
-	prune-local = !git branch --merged | grep -v master | grep -v dev | xargs -n 1 git branch -d
-	prune-all = !git remote | xargs -n 1 git remote prune
-	find = !sh -c 'git lg --grep="$@"'    # search for a string in the commit message log
-	srch = !sh -c 'git grep "$@" $(git rev-list --all)'    # search for a string in all commits
-	fixup = !sh -c 'git commit --fixup=$1' -
-	squash = !sh -c 'git commit --squash=$1' -
-	ri = rebase --interactive --autosquash --preserve-merges
-	oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
-	delete-tag = "!f() { git tag -d $1; git push origin :refs/tags/$1; }; f"
-	info = !sh -c 'git-info' -    # requires https://github.com/gitbits/git-info
-	submodule-list = !git ls-files --stage | grep 16000
-
-
-
-    freebase = pull --rebase
-    commit = commit -a -v
-    ci = commit
-    co = checkout
-    b = branch
-    nb = checkout -b
-    stat = status
-    sl = stash list
-    sa = stash apply
-    sd = stash drop
-    quicklog = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order --graph
-    changes = log --oneline --decorate
-    changelog = show --name-only
-    svnup = svn rebase
-    svnpush = svn dcommit
-    commitnumber = !git log --pretty=oneline | wc -l
-    diffmate = !sh -c 'git diff HEAD $1 | mate -' -
-    difffile = !sh -c 'git diff HEAD $1 | mate -' -
-    diffile = !sh -c 'git diff HEAD $1 | mate -' -
-    difile = !sh -c 'git diff HEAD $1 | mate -' -
-    worddiff = diff --word-diff
-    fakeignore = update-index --assume-unchanged
-    ignore = update-index --assume-unchanged
-    undo = reset --soft --keep HEAD^
-    unstage = reset HEAD
-    first = !sh -c 'git log origin/master --pretty=format:%H  --reverse | head -1'
-    lasttag = !sh -c 'git log --simplify-by-decoration --decorate=short --tags --format="%H" |head -1'
-    wtf = !git-wtf
-    has = branch --contains
-    db = !sh -c 'git branch -D $1 && git push origin :$1' -
-    sweep = !sh -c 'git-sweep cleanup'
-    ph = log --graph --pretty=pretty-history --abbrev-commit --date=relative
-    permission-reset = "git clone git://github.com/balupton/history.js.git help config  diff -p | grep -E '^(diff|old mode|new mode)' | sed -e 's/^old/NEW/;s/^new/old/;s/^NEW/new/' | git apply"
-    username = config --get user.name
-    standup = !sh -c 'git log --pretty=format:\"%Cred%h%Creset - %Cgreen%cr%Creset : %s\" --since=\"`date -v-1d \"+%Y-%m-%d 00:00:00\"`\" --until=\"`date \"+%Y-%m-%d 00:00:00\"`\" --all --author=\"`git config --get user.name`\"'
-
-
-
-	cl = clone
-	cld = clone --depth 1
-	clg = !sh -c 'git clone git://github.com/$1 $(basename $1)' -
-	clgp = !sh -c 'git clone git@github.com:$1 $(basename $1)' -
-	clgu = !sh -c 'git clone git@github.com:$(git config --get user.username)/$1 $1' -
-	#############
-	cp = cherry-pick
-	cpa = cherry-pick --abort
-	cpc = cherry-pick --continue
-	#############
-	f = fetch
-	fo = fetch origin
-	fu = fetch upstream
-	#############
-	fp = format-patch
-	#############
-	fk = fsck
-	#############
-	g = grep -p
-	#############
-	l = log --oneline
-	lg = log --oneline --graph --decorate
-	#############
-	ls = ls-files
-	lsf = !git ls-files | grep -i
-	#############
-	m = merge
-	ma = merge --abort
-	mc = merge --continue
-	ms = merge --skip
-	#############
-	o = checkout
-	om = checkout master
-	ob = checkout -b
-	opr = !sh -c 'git fo pull/$1/head:pr-$1 && git o pr-$1'
-	#############
-	pr = prune -v
-	#############
-	ps = push
-	psf = push -f
-	psu = push -u
-	pst = push --tags
-	#############
-	pso = push origin
-	psao = push --all origin
-	psfo = push -f origin
-	psuo = push -u origin
-	#############
-	psom = push origin master
-	psaom = push --all origin master
-	psfom = push -f origin master
-	psuom = push -u origin master
-	psoc = !git push origin $(git bc)
-	psaoc = !git push --all origin $(git bc)
-	psfoc = !git push -f origin $(git bc)
-	psuoc = !git push -u origin $(git bc)
-	psdc = !git push origin :$(git bc)
-	#############
-	pl = pull
-	pb = pull --rebase
-	#############
-	plo = pull origin
-	pbo = pull --rebase origin
-	plom = pull origin master
-	ploc = !git pull origin $(git bc)
-	pbom = pull --rebase origin master
-	pboc = !git pull --rebase origin $(git bc)
-	#############
-	plu = pull upstream
-	plum = pull upstream master
-	pluc = !git pull upstream $(git bc)
-	pbum = pull --rebase upstream master
-	pbuc = !git pull --rebase upstream $(git bc)
-	#############
-	rb = rebase
-	rba = rebase --abort
-	rbc = rebase --continue
-	rbi = rebase --interactive
-	rbs = rebase --skip
-	#############
-	re = reset
-	rh = reset HEAD
-	reh = reset --hard
-	rem = reset --mixed
-	res = reset --soft
-	rehh = reset --hard HEAD
-	remh = reset --mixed HEAD
-	resh = reset --soft HEAD
-	rehom = reset --hard origin/master
-	#############
-	r = remote
-	ra = remote add
-	rr = remote rm
-	rv = remote -v
-	rn = remote rename
-	rp = remote prune
-	rs = remote show
-	rao = remote add origin
-	rau = remote add upstream
-	rro = remote remove origin
-	rru = remote remove upstream
-	rso = remote show origin
-	rsu = remote show upstream
-	rpo = remote prune origin
-	rpu = remote prune upstream
-	#############
-	rmf = rm -f
-	rmrf = rm -r -f
-	#############
-	s = status
-	sb = status -s -b
-	#############
-	sa = stash apply
-	sc = stash clear
-	sd = stash drop
-	sl = stash list
-	sp = stash pop
-	ss = stash save
-	ssk = stash save -k
-	sw = stash show
-	st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
-	#############
-	t = tag
-	td = tag -d
-	#############
-	w = show
-	wp = show -p
-	wr = show -p --no-color
-	#############
-	svnr = svn rebase
-	svnd = svn dcommit
-	svnl = svn log --oneline --show-commit
-	#############
-	subadd = !sh -c 'git submodule add git://github.com/$1 $2/$(basename $1)' -
-	subrm = !sh -c 'git submodule deinit -f -- $1 && rm -rf .git/modules/$1 && git rm -f $1' -
-	subup = submodule update --init --recursive
-	subpull = !git submodule foreach git pull --tags origin master
-	#############
-	assume = update-index --assume-unchanged
-	unassume = update-index --no-assume-unchanged
-	assumed = !git ls -v | grep ^h | cut -c 3-
-	unassumeall = !git assumed | xargs git unassume
-	assumeall = !git status -s | awk {'print $2'} | xargs git assume
-	#############
-	bump = !sh -c 'git commit -am \"Version bump v$1\" && git psuoc && git release $1' -
-	release = !sh -c 'git tag v$1 && git pst' -
-	unrelease = !sh -c 'git tag -d v$1 && git pso :v$1' -
-	merged = !sh -c 'git o master && git plom && git bd $1 && git rpo' -
-	aliases = !git config -l | grep alias | cut -c 7-
-	snap = !git stash save 'snapshot: $(date)' && git stash apply 'stash@{0}'
-	bare = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
-	whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' -
-	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
-	#############
-	behind = !git rev-list --left-only --count $(git bu)...HEAD
-	ahead = !git rev-list --right-only --count $(git bu)...HEAD
-	#############
-	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-	subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 master' -
-	human = name-rev --name-only --refs=refs/heads/*
+    # ! TODO: add reset commands
+    # ! TODO: remote
