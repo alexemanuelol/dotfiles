@@ -1,0 +1,48 @@
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# Compresssed packages
+# It's better to unpack these files and commit the raw source
+# Git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Random
+*.bak
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.rbc
+*.so
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
