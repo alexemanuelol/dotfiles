@@ -3,18 +3,18 @@
     email = alexander.emanuelsson94@gmail.com
     username = alexemanuelol
 [core]
-    editor = vim ; User vim as default editor
-    pager = less ; Use less when viewing diff/ log
-    autocrlf = true ; true = windows, false = linux
+    editor = vim # User vim as default editor
+    pager = less # Use less when viewing diff/ log
+    autocrlf = true # true = windows, false = linux
     whitespace = fix,trailing-space,cr-at-eol
     excludesfile = ~/.gitignore_global
 [credential]
-    helper = store ; Less secure...
+    helper = store # Less secure...
 [github]
-    user = alexemanuelol ; GitHub username
-    token = TOKEN ; GitHub Token
+    user = alexemanuelol # GitHub username
+    token = TOKEN # GitHub Token
 [web]
-    browser = firefox ; web browser
+    browser = firefox # web browser
 [color]
     ui = auto
 [color "branch"]
@@ -35,20 +35,46 @@
 [diff]
     tool = vimdiff
 [push]
-    default = current ; Push current branch to update a branch with the same name on the receiving end
+    default = current # Push current branch to update a branch with the same name on the receiving end
 [alias]
     a = add
+    aa = add --all
+
+    b = branch
+    bd = branch -d # Delete merged branch
+    bD = branch -D # Force delete branch
+
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    cma = commit -ma
+    cam = commit --amend
+    camn = commit --amend --no-edit
+
+    co = checkout
+    cob = checkout -b
+    com = checkout master
+    cor = checkout .
+
+    d = diff
+    dt = difftool
+
+
+
+    f = fetch --all
+
+    st = status
+
+
+
+
+
+
 
     ; DAVID
-    a = add
     d = diff
     f = fetch -p # Fetch and prune previously tracked branches
-    co = checkout
-    ci = commit
     st = status
-    br = branch
-    bd = branch -d # Delete merged branch
-    bD = branch -D # Force delete a branch
     pu = push --force-with-lease
     hist = log --decorate --oneline --graph --date=short --all
     h = hist
@@ -61,11 +87,7 @@
 	cb = !git branch | grep ^* | cut -d' ' -f2
 	branch-name = !git cb    # alias to "cb" alias
 	st = status
-	ci = commit
-	cie = commit --allow-empty-message -m ''
 	cp = cherry-pick
-	br = branch
-	co = checkout
 	df = diff -C --color-words
 	pl = !git pull --rebase origin $(git cb)
 	ps = !git push origin $(git cb)
@@ -128,35 +150,6 @@
 
 
 
-    a = add --all
-	ai = add -i
-	#############
-	ap = apply
-	as = apply --stat
-	ac = apply --check
-	#############
-	ama = am --abort
-	amr = am --resolved
-	ams = am --skip
-	#############
-	b = branch
-	ba = branch -a
-	bd = branch -d
-	bdd = branch -D
-	br = branch -r
-	bc = rev-parse --abbrev-ref HEAD
-	bu = !git rev-parse --abbrev-ref --symbolic-full-name "@{u}"
-	bs = !git-branch-status
-	#############
-	c = commit
-	ca = commit -a
-	cm = commit -m
-	cam = commit -am
-	cem = commit --allow-empty -m
-	cd = commit --amend
-	cad = commit -a --amend
-	ced = commit --allow-empty --amend
-	#############
 	cl = clone
 	cld = clone --depth 1
 	clg = !sh -c 'git clone git://github.com/$1 $(basename $1)' -
@@ -166,14 +159,6 @@
 	cp = cherry-pick
 	cpa = cherry-pick --abort
 	cpc = cherry-pick --continue
-	#############
-	d = diff
-	dp = diff --patience
-	dc = diff --cached
-	dk = diff --check
-	dck = diff --cached --check
-	dt = difftool
-	dct = difftool --cached
 	#############
 	f = fetch
 	fo = fetch origin
