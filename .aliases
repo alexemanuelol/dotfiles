@@ -1,0 +1,12 @@
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Shortcuts
+alias g="git"
+alias v="vim"
+
+# Grep recursive, line number and no binaries
+alias gr="grep -rnI"
