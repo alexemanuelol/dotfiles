@@ -38,7 +38,7 @@
 [push]
     default = current # Push current branch to update a branch with the same name on the receiving end
 [alias]
-    aliases = !git config -l | grep alias | cut -c 7-
+    aliases = !git config -l | grep alias | cut -c 7- # Print all aliases
     ##########
     a = add
     aa = add --all
@@ -60,16 +60,18 @@
     cor = checkout .
     ##########
     cl = clone
+    cls = clone --recurse-submodules -j8 # Clone all submodules as well
     ##########
     d = diff
-	dfc = diff -C --color-words
+    dfc = diff -C --color-words
     dt = difftool
     ##########
     f = fetch --all
     ##########
-	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
-    lgg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
-    lgt = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order
+    lg = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+    lgt = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cD) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+    lgg = lg --graph
+    lgtg = lgt --graph
     ##########
     m = merge
     ##########
@@ -77,10 +79,12 @@
     plom = pull origin master
     ##########
     ps = push
-    psf = push --fource-with-lease
+    psf = push --force-with-lease
     ##########
     rb = rebase
     rbom = rebase origin master
+    ##########
+    remotes = remote -v
     ##########
     s = status
     st = stash
@@ -88,8 +92,10 @@
     stl = stash list
     ##########
     who = shortlog -s -- # Commits per contributor
-	whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
+    whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
     ##########
-
-    # ! TODO: add reset commands
-    # ! TODO: remote
+    camnpsf = camn && git psf # amend and force push
+    cln = clean -xdff # Cleans the repository
+    rsth = reset --hard # Reset the staging area and the working directory to match the most recent commit.
+    undo = reset --soft HEAD^ # Undo the latest commit but keep the changes
+    unstage = reset HEAD # Remove added files from staging area
