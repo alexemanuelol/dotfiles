@@ -1,4 +1,7 @@
+#!/usr/bin/env bash
+
 # Easier navigation
+alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -7,6 +10,13 @@ alias .....="cd ../../../.."
 # Shortcuts
 alias g="git"
 alias v="vim"
+alias gv="gvim"
 
 # Grep recursive, line number and no binaries
 alias gr="grep -rnI"
+
+# Search through command history
+alias hs="history | grep"
+
+# 3M
+alias ngt="nuget install packages.config -OutputDirectory packages -ExcludeVersion"

@@ -108,7 +108,7 @@
     "vim.useSystemClipboard":                   true,       // Use system clipboard for unnamed register
     "vim.textwidth":                            120,        // Text width
     "vim.showcmd":                              true,       // Shows partial commands on the last line
-    "vim.smartRelativeLine":                    true,       // Use relative line number
+    //"vim.smartRelativeLine":                    true,       // Use relative line number
     "vim.hlsearch":                             true,       // Show all matches of the most recent search pattern
     "vim.history":                              1000,       // Command history
     "vim.vimrc.enable":                         true,       // Enable .vimrc (Only remaps are supported)

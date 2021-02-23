@@ -18,7 +18,7 @@ set mouse=a                     " Allow mouse click to move cursor
 set ttyfast                     " Terminal acceleration
 set visualbell                  " Blink cursor on error instead of beeping
 set number                      " Show line number
-set relativenumber              " Lines numbered relative to the cursor's position
+"set relativenumber              " Lines numbered relative to the cursor's position
 set numberwidth=5               " Width of line number
 set expandtab                   " Expand tabs to spaces
 set tabstop=4                   " Spaces to be inserted when tab key is pressed
@@ -165,8 +165,8 @@ let NERDTreeShowHidden=1                " Show hidden files and directories
 map <F12> :NERDTreeToggle<CR>           " Toggle NerdTree
 
 " Start up nerdtree automatically if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close vim if nerdtree is the only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

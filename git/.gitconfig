@@ -16,6 +16,8 @@
     token = TOKEN # GitHub Token
 [web]
     browser = firefox # web browser
+[gui]
+    encoding = utf-8
 [color]
     ui = auto
 [color "branch"]
@@ -59,11 +61,13 @@
     com = checkout master
     cor = checkout .
     ##########
+    cfg = config --list
+    ##########
     cl = clone
     cls = clone --recurse-submodules -j8 # Clone all submodules as well
     ##########
     d = diff
-    dfc = diff -C --color-words
+    dc = diff -C --color-words
     dt = difftool
     ##########
     f = fetch --all

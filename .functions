@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Create a new directory and enter it
+mkd()
+{
+    mkdir -p "$@" && cd "$_";
+}
+
+# Git clone and enter it (Works for links both with and without ".get")
+gclonecd()
+{
+    git clone --recurse-submodules -j8 "$1" && cd "$(basename "$1" .git)"
+}
