@@ -16,6 +16,7 @@ set encoding=UTF-8              " Encoding
 set mouse=a                     " Allow mouse click to move cursor
 "set ttymouse=                  " Set this to the name of the terminal that supports mouse codes.
 set ttyfast                     " Terminal acceleration
+set lazyredraw                  " Don't redraw when we don't have to
 set visualbell                  " Blink cursor on error instead of beeping
 set number                      " Show line number
 "set relativenumber              " Lines numbered relative to the cursor's position
@@ -53,8 +54,22 @@ set secure                      " Prohibit .vimrc files to execute shell, create
 set laststatus=2                " Always show statusline (2 = always)
 set showtabline=2               " Always show tabline, even if there's just one tab
 set guioptions-=L               " To avoid window window moving
+set esckeys                     " Allow cursor keys in insert mode
+set magic                       " Enable extended regexes
+set shell=/bin/sh               " Use /bin/sh for executing shell commands
+set gdefault                    " By default add g flag to search/replace.
+
+set foldenable                  " Enable folding
+set foldmethod=marker           " Default marker is {{{ and }}}
+set foldcolumn=0                " Column to show folds
+set foldlevel=0                 " Close all fold by default
+set foldminlines=0              " Allow folding single lines
+set foldnestmax=5               " Set max fold nesting level
 
 let mapleader=" "               " Use space as <leader> key
+
+" Toggle folding
+nnoremap <leader><leader> za
 
 " Enables a menu at the bottom of the screen when pressing <TAB> on a command
 set wildmenu
