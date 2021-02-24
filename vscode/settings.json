@@ -43,7 +43,7 @@
     "editor.detectIndentation":                 true,       // Alter tabSize and insertSpaces based on content of file
     "editor.insertSpaces":                      true,       // Expand tabs to spaces
     "editor.tabSize":                           4,          // Number of spaces a tab is equal to
-    "editor.lineNumbers":                       "relative", // Display mode for line number, can be 'on' for normal
+    "editor.lineNumbers":                       "normal",   // Display mode for line number, can be 'on' for normal
     "editor.mouseWheelZoom":                    true,       // Enable font zoom when holding <CTRL>
     "editor.smoothScrolling":                   true,       // Enable smooth scroll
     "editor.cursorSmoothCaretAnimation":        true,       // Enable smooth cursor

@@ -80,13 +80,13 @@
     m = merge
     ##########
     pl = pull
-    plom = pull origin master
+    plom = pull origin/master
     ##########
     ps = push
     psf = push --force-with-lease
     ##########
     rb = rebase
-    rbom = rebase origin master
+    rbom = rebase origin/master
     ##########
     remotes = remote -v
     ##########
