@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
 # Create a new directory and enter it
-mkd()
+md()
 {
-    mkdir -p "$@" && cd "$_";
+	mkdir -p "$@" && cd "$@"
+}
+
+# Find shorthand
+f()
+{
+	find . -name "$1" 2>&1 | grep -v 'Permission denied'
+}
+
+# Grep shorthand
+gr()
+{
+    grep -rniI "$1"
 }
 
 # Git clone and enter it (Works for links both with and without ".get")
