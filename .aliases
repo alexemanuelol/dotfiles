@@ -11,6 +11,8 @@ alias .....="cd ../../../.."
 alias g="git"
 alias v="vim"
 alias gv="gvim"
+alias p="python3"
+alias l="ls -lahF"
 
 # Grep recursive, line number and no binaries
 alias gr="grep -rnI"
@@ -20,3 +22,4 @@ alias hs="history | grep"
 
 # 3M
 alias ngt="nuget install packages.config -OutputDirectory packages -ExcludeVersion"
+alias r="rake"
