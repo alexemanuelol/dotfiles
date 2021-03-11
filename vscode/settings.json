@@ -43,7 +43,7 @@
     "editor.detectIndentation":                 true,       // Alter tabSize and insertSpaces based on content of file
     "editor.insertSpaces":                      true,       // Expand tabs to spaces
     "editor.tabSize":                           4,          // Number of spaces a tab is equal to
-    "editor.lineNumbers":                       "normal",   // Display mode for line number, can be 'on' for normal
+    "editor.lineNumbers":                       "on",       // Display mode for line number, can be 'on' for normal
     "editor.mouseWheelZoom":                    true,       // Enable font zoom when holding <CTRL>
     "editor.smoothScrolling":                   true,       // Enable smooth scroll
     "editor.cursorSmoothCaretAnimation":        true,       // Enable smooth cursor
@@ -108,7 +108,7 @@
     "vim.useSystemClipboard":                   true,       // Use system clipboard for unnamed register
     "vim.textwidth":                            120,        // Text width
     "vim.showcmd":                              true,       // Shows partial commands on the last line
-    //"vim.smartRelativeLine":                    true,       // Use relative line number
+    "vim.smartRelativeLine":                    false,      // Use relative line number
     "vim.hlsearch":                             true,       // Show all matches of the most recent search pattern
     "vim.history":                              1000,       // Command history
     "vim.vimrc.enable":                         true,       // Enable .vimrc (Only remaps are supported)
