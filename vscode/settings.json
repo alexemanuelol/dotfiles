@@ -34,7 +34,7 @@
 
     "editor.fastScrollSensitivity":             3,          // Scroll 3 rows when holding <ALT>
     "editor.mouseWheelScrollSensitivity":       3,          // Scroll 3 rows when mouse scroll
-    "editor.hover.delay":                       0,          // Delay in milliseconds after which the hover is shown
+    "editor.hover.delay":                       1000,       // Delay in milliseconds after which the hover is shown
     "editor.fontFamily":                        "Hack",     // https://github.com/source-foundry/Hack
     "editor.fontSize":                          12,         // Font size
     "editor.fontWeight":                        "bold",     // Font weight
