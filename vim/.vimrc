@@ -94,6 +94,10 @@ endif
 " Clang-Format
 map <silent><F8> <ESC>:ClangFormat<CR>
 
+" Automatically saves folds and reopen them on Enter/Leave
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
