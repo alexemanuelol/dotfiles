@@ -66,6 +66,7 @@
     "files.trimFinalNewlines":                  true,       // Trim newlines at bottom on save
     "files.trimTrailingWhitespace":             false,      // Trim trailing whitespace on save
 
+    "workbench.editor.enablePreview":           false       // Always open new tabs when clicked on file
     "workbench.commandPalette.history":         1000,       // Command history
     "workbench.list.smoothScrolling":           true,       // Smooth scrolling in workbench lists
 
