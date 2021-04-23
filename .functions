@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
 # Create a new directory and enter it
-md()
+mkcd()
 {
 	mkdir -p "$@" && cd "$@"
 }
@@ -13,7 +12,7 @@ f()
 }
 
 # Grep shorthand
-gr()
+grp()
 {
     grep -rniI "$1"
 }
@@ -21,5 +20,5 @@ gr()
 # Git clone and enter it (Works for links both with and without ".get")
 gclonecd()
 {
-    git clone --recurse-submodules -j8 "$1" && cd "$(basename "$1" .git)"
+    git clone --recurse-submodules -j8 "$1" && cd "$(basename '$1' .git)"
 }
