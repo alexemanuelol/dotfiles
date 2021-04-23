@@ -54,7 +54,7 @@ set secure                      " Prohibit .vimrc files to execute shell, create
 set laststatus=2                " Always show statusline (2 = always)
 set showtabline=2               " Always show tabline, even if there's just one tab
 set guioptions-=L               " To avoid window window moving
-set esckeys                     " Allow cursor keys in insert mode
+"set esckeys                     " Allow cursor keys in insert mode
 set magic                       " Enable extended regexes
 set shell=/bin/sh               " Use /bin/sh for executing shell commands
 set gdefault                    " By default add g flag to search/replace.
