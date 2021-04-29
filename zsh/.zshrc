@@ -1,28 +1,43 @@
 # Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export BROWSER="firefox"
+export EDITOR="nvim"
+export pager="less"
+
+# Enable command auto-correction
+ENABLE_CORRECTION="true"
+
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
 # History command output timestamp format.
 HIST_STAMPS="yyyy-mm-dd"
 
+# Ctrl + space - Accept autosuggestion
+bindkey '^ ' autosuggest-accept
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git
+         zsh-autosuggestions
+         zsh-syntax-highlighting)
 
+ZSH_THEME="jnrowe"
 
 source $ZSH/oh-my-zsh.sh
 
-# Theme inspired from 'simple'
-SSH_HOSTNAME=$([[ -n "$SSH_CONNECTION" ]] && echo "$(hostname) ")
-local return_code="%(?..%{$fg[red]%}%? %{$reset_color%})"
-PROMPT='$return_code$SSH_HOSTNAME%(!.%{$fg[red]%}.%{$fg[green]%})%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} '
-ZSH_THEME_GIT_PROMPT_PREFIX="("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
-ZSH_THEME_GIT_PROMPT_DIRTY=" ✗"
-ZSH_THEME_GIT_PROMPT_CLEAN=" ✔"
+# Aliases
+alias v="$EDITOR"
+alias vi="$EDITOR"
+alias vim="$EDITOR"
+
+source ~/.aliases
+source ~/.functions
+
+# History
+HISTSIZE=10000
+HISTSAVE=10000
