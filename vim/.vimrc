@@ -88,7 +88,7 @@ noremap <silent><leader>w :%s/\s\+$//g<CR>
 
 " Git bin for Windows
 if has('win32') || has('win32unix')
-    let g:gitgutter_git_executable = 'C:\Program Files (x86)\Git\bin\git.exe'
+    let g:gitgutter_git_executable = 'C:/Program Files (x86)/Git/bin/git.exe'
 endif
 
 " Clang-Format
