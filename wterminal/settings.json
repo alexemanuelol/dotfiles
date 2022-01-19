@@ -1,0 +1,216 @@
+//
+//  ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗        ██╗███████╗ ██████╗ ███╗   ██╗
+//  ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝        ██║██╔════╝██╔═══██╗████╗  ██║
+//  ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗        ██║███████╗██║   ██║██╔██╗ ██║
+//  ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║   ██   ██║╚════██║██║   ██║██║╚██╗██║
+//  ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║██╗╚█████╔╝███████║╚██████╔╝██║ ╚████║
+//  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═╝ ╚════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
+//
+//  For Windows Terminal
+//
+//  Setup:
+//      Run the following commands in powershell:
+//          $ Install-Module posh-git -Scope CurrentUser
+//          $ Install-Module oh-my-posh -Scope CurrentUser
+//          $ Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
+//
+//      Open powershell profile by running:
+//          $ notepad $profile
+//
+//      Copy the following to the profile file:
+//          Import-Module posh-git
+//          Import-Module oh-my-posh
+//          Set-PoshPrompt agnoster
+//          cls
+//          
+//      Download the Jet Brains Mono Font:
+//          https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono
+//
+//      Copy this settings.json file into the systems settings.json file
+
+{
+
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "initialCols": 120,
+    "initialRows": 30,
+    "initialPosition": "0,0",
+    "theme": "dark",
+    "useAcrylicInTabRow": true,
+    "confirmCloseAllTabs": false,
+
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "profiles":
+    {
+        "defaults":
+        {
+            "acrylicOpacity": 0.8,
+            "antialiasingMode": "cleartype",
+            "bellStyle": "visual",
+            "colorScheme": "Blue Matrix",
+            "cursorColor": "#FF0000",
+            "font":
+            {
+                // https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono
+                "face": "JetBrainsMono NF",
+                "size": 9,
+                "weight": "normal"
+            },
+            "historySize": 20000,
+            "padding": "24, 24, 24, 24",
+            "useAcrylic": true
+        },
+        "list":
+        [
+            {
+                "name": "Windows PowerShell",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "commandline": "powershell.exe -NoLogo -NoExit -ExecutionPolicy Bypass",
+                "startingDirectory": "%USERPROFILE%",
+                "hidden": false
+            },
+            {
+                "name": "Command Prompt",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "commandline": "cmd.exe",
+                "startingDirectory": "%USERPROFILE%",
+                "hidden": false
+            },
+            {
+                "name": "Bash",
+                "guid": "{00000000-0000-0000-ba54-000000000002}",
+                "commandline": "%USERPROFILE%/AppData/Local/Programs/Git/bin/bash.exe -i -l",
+                "startingDirectory": "%USERPROFILE%",
+                "hidden": false,
+                "icon": "%USERPROFILE%/AppData/Local/Programs/Git/mingw64/share/git/git-for-windows.ico"
+            }
+        ]
+    },
+
+    "schemes":
+    [
+        {
+            "name": "Blue Matrix",
+
+            "background": "#1d2342",
+            "foreground": "#b8ffe1",
+
+            "black": "#101116",
+            "blue": "#00b0ff",
+            "cyan": "#76c1ff",
+            "green": "#00ff9c",
+            "purple": "#d57bff",
+            "red": "#ff5680",
+            "white": "#c7c7c7",
+            "yellow": "#fffc58",
+            "brightBlack": "#686868",
+            "brightBlue": "#6871ff",
+            "brightCyan": "#60fdff",
+            "brightGreen": "#5ffa68",
+            "brightPurple": "#d682ec",
+            "brightRed": "#ff6e67",
+            "brightWhite": "#ffffff",
+            "brightYellow": "#fffc67"
+        },
+        {
+            "name": "Aurora",
+
+            "background": "#23262e",
+            "foreground": "#ffca28",
+
+            "selectionBackground": "#292e38",
+            "cursorColor": "#ee5d43",
+
+            "black": "#23262e",
+            "blue": "#0321d7",
+            "cyan": "#03d6b8",
+            "green": "#8fd46d",
+            "purple": "#ee5d43",
+            "red": "#f0266f",
+            "white": "#c74ded",
+            "yellow": "#ffe66d",
+            "brightBlack": "#292e38",
+            "brightBlue": "#03d6b8",
+            "brightCyan": "#03d6b8",
+            "brightGreen": "#8fd46d",
+            "brightPurple": "#ee5d43",
+            "brightRed": "#f92672",
+            "brightWhite": "#c74ded",
+            "brightYellow": "#ffe66d"
+        }
+    ],
+
+    "actions":
+    [
+        // Application-level
+        { "command": "closeWindow", "keys": "alt+f4" },
+        { "command": "find", "keys": "ctrl+shift+f" },
+        { "command": { "action": "findMatch", "direction": "next" } },
+        { "command": { "action": "findMatch", "direction": "prev" } },
+        { "command": "openNewTabDropdown", "keys": "ctrl+shift+space" },
+        { "command": { "action": "openSettings", "target": "settingsUI" }, "keys": "ctrl+," },
+        { "command": { "action": "openSettings", "target": "settingsFile" }, "keys": "ctrl+shift+," },
+        { "command": { "action": "openSettings", "target": "defaultsFile" }, "keys": "ctrl+alt+," },
+        { "command": "openSystemMenu", "keys": "alt+space" },
+        { "command": "toggleFullscreen", "keys": "alt+enter" },
+        { "command": "toggleFullscreen", "keys": "f11" },
+
+        // New tab profile
+        { "command": { "action": "newTab", "index": 0 }, "keys": "ctrl+shift+1" }, // PowerShell
+        { "command": { "action": "newTab", "index": 1 }, "keys": "ctrl+shift+2" }, // Command Prompt
+        { "command": { "action": "newTab", "index": 2 }, "keys": "ctrl+shift+3" }, // Git Bash
+
+        // Pane Management
+        { "command": "closePane", "keys": "ctrl+shift+w" },
+        { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
+        { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
+        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+        { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
+        { "command": { "action": "moveFocus", "direction": "previous" }, "keys": "ctrl+alt+left" },
+        { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
+        { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
+        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+        { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
+        { "command": { "action": "moveFocus", "direction": "previous" }, "keys": "ctrl+alt+left" },
+        { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" },
+        { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+-" },
+        { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+plus" },
+
+        // Clipboard Integration
+        { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
+        { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+insert" },
+        { "command": "paste", "keys": "ctrl+v" },
+        { "command": "paste", "keys": "ctrl+shift+v" },
+        { "command": "paste", "keys": "shift+insert" },
+
+        // Keyboard Selection
+        { "command": {"action": "updateSelection", "direction": "left", "mode": "char" }, "keys": "shift+left" },
+        { "command": {"action": "updateSelection", "direction": "right", "mode": "char" }, "keys": "shift+right" },
+        { "command": {"action": "updateSelection", "direction": "up", "mode": "char" }, "keys": "shift+up" },
+        { "command": {"action": "updateSelection", "direction": "down", "mode": "char" }, "keys": "shift+down" },
+        { "command": {"action": "updateSelection", "direction": "left", "mode": "word" }, "keys": "ctrl+shift+left" },
+        { "command": {"action": "updateSelection", "direction": "right", "mode": "word" }, "keys": "ctrl+shift+right" },
+        { "command": {"action": "updateSelection", "direction": "left", "mode": "view" }, "keys": "shift+home" },
+        { "command": {"action": "updateSelection", "direction": "right", "mode": "view" }, "keys": "shift+end" },
+        { "command": {"action": "updateSelection", "direction": "up", "mode": "view" }, "keys": "shift+pgup" },
+        { "command": {"action": "updateSelection", "direction": "down", "mode": "view" }, "keys": "shift+pgdn" },
+
+        // Scrollback
+        { "command": "scrollUp", "keys": "ctrl+shift+up" },
+        { "command": "scrollDown", "keys": "ctrl+shift+down" },
+        { "command": "scrollUpPage", "keys": "ctrl+shift+pgup" },
+        { "command": "scrollDownPage", "keys": "ctrl+shift+pgdn" },
+        { "command": "scrollToTop", "keys": "ctrl+shift+home" },
+        { "command": "scrollToBottom", "keys": "ctrl+shift+end" },
+
+        // Visual Adjustment
+        { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "ctrl+=" },
+        { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "ctrl+-" },
+        { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "ctrl+numpad_plus" },
+        { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "ctrl+numpad_minus" },
+        { "command": "resetFontSize", "keys": "ctrl+0" },
+        { "command": "resetFontSize", "keys": "ctrl+numpad_0" },
+        { "command": { "action": "setColorScheme", "colorScheme": "Blue Matrix" }, "keys": "ctrl+alt+1" },
+        { "command": { "action": "setColorScheme", "colorScheme": "Aurora" }, "keys": "ctrl+alt+2" }
+    ]
+}
