@@ -1,0 +1,23 @@
+- name: Set up Arch Linux system
+  hosts: localhost
+  become: true
+
+  vars:
+    dotfiles_dir: "{{ lookup('env', 'HOME')}}/.dotfiles"
+    pacman_packages:
+      cli:
+        - git
+        - stow
+        - zsh
+
+  tasks:
+    - name: Update pacman cache
+      tags: [pacman]
+      pacman:
+        update_cache: true
+
+    - name: Install CLI packages
+      tags: [pacman]
+      pacman:
+        name: "{{ pacman_packages.cli }}"
+        state: present
