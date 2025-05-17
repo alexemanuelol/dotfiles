@@ -26,7 +26,7 @@
       tags: [zsh]
       user:
         name: "{{ lookup('env', 'USER') }}"
-        shell: /bin/zshA
+        shell: /bin/zsh
 
     - name: Stow dotfiles
       tags: [stow]
