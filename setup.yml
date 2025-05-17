@@ -21,3 +21,20 @@
       pacman:
         name: "{{ pacman_packages.cli }}"
         state: present
+
+    - name: Change default shell to zsh
+      tags: [zsh]
+      user:
+        name: "{{ lookup('env', 'USER') }}"
+        shell: /bin/zshA
+
+    - name: Stow dotfiles
+      tags: [stow]
+      ansible.builtin.shell:
+        chdir: "{{ dotfiles_dir  }}"
+        cmd: "stow --verbose {{ item }}"
+      register: stow_out
+      changed_when: 'stow_out.stderr is search("LINK: ")'
+      with_items:
+        - git
+        - zsh
