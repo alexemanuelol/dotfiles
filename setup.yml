@@ -1,6 +1,5 @@
 - name: Set up Arch Linux system
   hosts: localhost
-  become: true
 
   vars:
     dotfiles_dir: "{{ lookup('env', 'HOME')}}/.dotfiles"
@@ -17,20 +16,24 @@
   tasks:
     - name: Update pacman cache
       tags: [pacman]
+      become: true
       pacman:
         update_cache: true
 
     - name: Install CLI packages
       tags: [pacman]
+      become: true
       pacman:
         name: "{{ pacman_packages.cli }}"
         state: present
 
     - name: Change default shell to zsh
       tags: [zsh]
+      become: true
       user:
         name: "{{ lookup('env', 'USER') }}"
-        shell: /bin/zsh
+        shell: /usr/bin/zsh
+      when: ansible_env.SHELL != "/usr/bin/zsh"
 
     - name: Stow dotfiles
       tags: [stow]
@@ -70,3 +73,7 @@
         - name: Rebuild font cache
           ansible.builtin.command: fc-cache -fv
           when: not font_result.stat.exists
+
+    - name: Show ansible_env
+      debug:
+        var: ansible_env
