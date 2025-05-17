@@ -73,7 +73,3 @@
         - name: Rebuild font cache
           ansible.builtin.command: fc-cache -fv
           when: not font_result.stat.exists
-
-    - name: Show ansible_env
-      debug:
-        var: ansible_env
