@@ -29,14 +29,6 @@
         name: "{{ pacman_packages.cli }}"
         state: present
 
-    - name: Change default shell to zsh
-      tags: [zsh]
-      become: true
-      user:
-        name: "{{ lookup('env', 'USER') }}"
-        shell: /usr/bin/zsh
-      when: ansible_env.SHELL != "/usr/bin/zsh"
-
     - name: Stow dotfiles
       tags: [stow]
       ansible.builtin.shell:
@@ -75,3 +67,59 @@
         - name: Rebuild font cache
           ansible.builtin.command: fc-cache -fv
           when: not font_result.stat.exists
+
+    - name: Install Oh My Zsh and plugins
+      tags: [zsh]
+      vars:
+        oh_my_zsh_dir: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+        zsh_plugins:
+          - name: zsh-autosuggestions
+            repo: https://github.com/zsh-users/zsh-autosuggestions.git
+          - name: zsh-syntax-highlighting
+            repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+      block:
+        - name: Check if Oh My Zsh is installed
+          ansible.builtin.stat:
+            path: "{{ oh_my_zsh_dir }}"
+          register: oh_my_zsh_stat
+          changed_when: false
+
+        - name: Create temporary directory for installation
+          ansible.builtin.tempfile:
+            state: directory
+            suffix: ohmyzsh
+          register: oh_my_zsh_tmp
+          when: not oh_my_zsh_stat.stat.exists
+
+        - name: Download Oh My Zsh installer
+          ansible.builtin.get_url:
+            url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+            dest: "{{ oh_my_zsh_tmp.path }}/install.sh"
+          when: not oh_my_zsh_stat.stat.exists
+
+        - name: Run Oh My Zsh installer
+          ansible.builtin.shell: "/bin/sh {{ oh_my_zsh_tmp.path }}/install.sh --unattended --keep-zshrc"
+          args:
+            creates: "{{ oh_my_zsh_dir }}"
+          when: not oh_my_zsh_stat.stat.exists
+
+        - name: Clean up temporary installer directory
+          ansible.builtin.file:
+            path: "{{ oh_my_zsh_tmp.path }}"
+            state: absent
+          when: not oh_my_zsh_stat.stat.exists
+
+        - name: Install Zsh plugins
+          ansible.builtin.git:
+            repo: "{{ item.repo }}"
+            dest: "{{ oh_my_zsh_dir }}/custom/plugins/{{ item.name }}"
+            depth: 1
+          loop: "{{ zsh_plugins }}"
+
+    - name: Change default shell to zsh
+      tags: [zsh]
+      become: true
+      user:
+        name: "{{ lookup('env', 'USER') }}"
+        shell: /usr/bin/zsh
+      when: ansible_env.SHELL != "/usr/bin/zsh"
