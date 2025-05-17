@@ -8,6 +8,8 @@
       cli:
         # Development tools
         - git
+        - python
+        - python-pip
         - zsh
 
         # Utils
