@@ -51,7 +51,7 @@
       block:
         - name: Check if fonts are installed
           ansible.builtin.stat:
-            path: "{{ fonts_dir }}/JetBrains Mono Regular Nerd Font Complete.ttf"
+            path: "{{ fonts_dir }}/JetBrainsMonoNerdFont-Regular.ttf"
           register: font_result
 
         - name: Create fonts directory
