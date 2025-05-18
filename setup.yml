@@ -48,6 +48,7 @@
       when: not (ansible_user_id == 'root')
 
     - name: Clean up yay build directory
+      tags: [yay]
       file:
         path: /home/{{ ansible_user_id }}/yay
         state: absent
