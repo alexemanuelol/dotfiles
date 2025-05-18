@@ -1,24 +1,5 @@
 # Path to oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-HISTFILE=~/.histfile
-
-export BROWSER="firefox"
-export EDITOR="nvim"
-export pager="less"
-
-# Enable command auto-correction
-ENABLE_CORRECTION="true"
-
-# Display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# History command output timestamp format.
-HIST_STAMPS="yyyy-mm-dd"
-
-bindkey -v
-
-# Ctrl + space - Accept autosuggestion
-bindkey '^ ' autosuggest-accept
+export ZSH="$HOME/.oh-my-zsh"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -32,9 +13,33 @@ plugins=(archlinux
          zsh-autosuggestions
          zsh-syntax-highlighting)
 
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-myzsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="jnrowe"
 
 source $ZSH/oh-my-zsh.sh
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=20000
+HISTSAVE=20000
+HIST_STAMPS="yyyy-mm-dd"
+
+export EDITOR="nvim"
+
+# Enable command auto-correction
+ENABLE_CORRECTION="true"
+
+# Display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# vi mode
+bindkey -v
+
+# Ctrl + space - Accept autosuggestion
+bindkey '^ ' autosuggest-accept
 
 # Aliases
 alias v="$EDITOR"
@@ -44,6 +49,3 @@ alias vim="$EDITOR"
 #source ~/.aliases
 #source ~/.functions
 
-# History
-HISTSIZE=10000
-HISTSAVE=10000
