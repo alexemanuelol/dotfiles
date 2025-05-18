@@ -1,5 +1,5 @@
 # Path to oh-my-zsh installation.
-#export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 HISTFILE=~/.histfile
 
 export BROWSER="firefox"
@@ -25,13 +25,16 @@ bindkey '^ ' autosuggest-accept
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git
-#         zsh-autosuggestions
-#         zsh-syntax-highlighting)
-#
-#ZSH_THEME="jnrowe"
-#
-#source $ZSH/oh-my-zsh.sh
+plugins=(archlinux
+         command-not-found
+         git
+         wd
+         zsh-autosuggestions
+         zsh-syntax-highlighting)
+
+ZSH_THEME="jnrowe"
+
+source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias v="$EDITOR"
