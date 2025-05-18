@@ -26,7 +26,7 @@ y = 2
 hide_when_typing = true
 
 [cursor]
-style = { shape = "Block", blinking = "Always" }
+style = { shape = "Beam", blinking = "Always" }
 unfocused_hollow = false
 
 [keyboard]
