@@ -31,6 +31,28 @@
         name: "{{ pacman_packages.cli }}"
         state: present
 
+    - name: Clone yay AUR repository
+      tags: [yay]
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /home/{{ ansible_user_id }}/yay
+        clone: yes
+        update: no
+      when: not (ansible_user_id == 'root')
+
+    - name: Build and install yay
+      tags: [yay]
+      shell: makepkg -si --noconfirm
+      args:
+        chdir: /home/{{ ansible_user_id }}/yay
+      when: not (ansible_user_id == 'root')
+
+    - name: Clean up yay build directory
+      file:
+        path: /home/{{ ansible_user_id }}/yay
+        state: absent
+      when: not (ansible_user_id == 'root')
+
     - name: Stow dotfiles
       tags: [stow]
       ansible.builtin.shell:
