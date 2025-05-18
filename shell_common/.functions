@@ -1,24 +1,28 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
 # Create a new directory and enter it
-mkcd()
-{
+mkcd() {
 	mkdir -p "$@" && cd "$@"
 }
 
 # Find shorthand
-f()
-{
+f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
 # Grep shorthand
-grp()
-{
+grp() {
     grep -rniI "$1"
 }
 
 # Git clone and enter it (Works for links both with and without ".get")
-gclonecd()
-{
+gclonecd() {
     git clone --recurse-submodules -j8 "$1" && cd "$(basename '$1' .git)"
+}
+
+# Rake repository
+rakeci() {
+    local repo_name
+    repo_name=$(basename "$PWD")
+    rake BUILD_NAME="$(repo_name)-ci"
 }

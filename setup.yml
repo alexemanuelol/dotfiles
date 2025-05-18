@@ -63,6 +63,7 @@
       changed_when: 'stow_out.stderr is search("LINK: ")'
       with_items:
         - git
+        - shell_common
         - zsh
 
     - name: Download and install Nerd Font

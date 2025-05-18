@@ -6,8 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux
-         command-not-found
+plugins=(command-not-found
          git
          wd
          zsh-autosuggestions
@@ -21,13 +20,15 @@ ZSH_THEME="jnrowe"
 
 source $ZSH/oh-my-zsh.sh
 
+# Source shell_common stuff
+source ~/.aliases
+source ~/.functions
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=20000
 HISTSAVE=20000
 HIST_STAMPS="yyyy-mm-dd"
-
-export EDITOR="nvim"
 
 # Enable command auto-correction
 ENABLE_CORRECTION="true"
@@ -41,11 +42,9 @@ bindkey -v
 # Ctrl + space - Accept autosuggestion
 bindkey '^ ' autosuggest-accept
 
+export EDITOR="nvim"
+
 # Aliases
 alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
-
-#source ~/.aliases
-#source ~/.functions
-
