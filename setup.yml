@@ -54,6 +54,15 @@
         state: absent
       when: not (ansible_user_id == 'root')
 
+    - name: Create dotfile directories
+      tags: [stow]
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+        state: directory
+        recurse: yes
+      with_items:
+        - .config/alacritty
+
     - name: Stow dotfiles
       tags: [stow]
       ansible.builtin.shell:
@@ -62,6 +71,7 @@
       register: stow_out
       changed_when: 'stow_out.stderr is search("LINK: ")'
       with_items:
+        - alacritty
         - git
         - shell_common
         - zsh
