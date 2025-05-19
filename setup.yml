@@ -62,6 +62,7 @@
         recurse: yes
       with_items:
         - .config/alacritty
+        - .config/nvim
 
     - name: Stow dotfiles
       tags: [stow]
@@ -73,6 +74,7 @@
       with_items:
         - alacritty
         - git
+        - nvim
         - shell_common
         - zsh
 
