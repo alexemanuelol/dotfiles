@@ -32,13 +32,21 @@ vim.opt.showmatch = true    -- Show matching opening character ), ], }
 -- Navigation
 vim.opt.splitright = true   -- Splitting a window (:vsplit) will put the new window right of the current one
 vim.opt.splitbelow = true   -- Splitting a window (:split) will put the new window below the current one
-vim.opt.scrolloff = 2       -- Scroll margin
+vim.opt.scroll = 8          -- Number of lines to scroll
+vim.opt.scrolloff = 8       -- Scroll margin
+
+-- Backup
+vim.opt.swapfile = true     -- Use swap files
+vim.opt.backup = false      -- Use backup files
+vim.opt.undofile = true     -- Use undo file for persistent undo
+vim.opt.hidden = true       -- Allow switching buffers without saving
 
 -- Other
 vim.opt.mouse = ""          -- Disable mouse support completely, to force myself to stop using it
-vim.opt.updatetime = 500    -- Time to wait before triggering certain events (ms)
+vim.opt.updatetime = 250    -- Time to wait before triggering certain events (ms)
 vim.opt.autoread = true     -- If file changed outside vim, automatically read it again
 -- vim.opt.columns = 120    -- Max columns
+vim.opt.colorcolumn = "80"  -- Highlight column
 vim.opt.conceallevel = 2    -- Hide text like markdown syntax (e.g. **bold**)
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
@@ -60,3 +68,11 @@ vim.opt.listchars = {   -- Show invisible characters
     precedes = "«",     -- Visible when wrap = false
     nbsp = "␣"          -- Shows for non-breaking space
 }
+
+vim.opt.fillchars = {
+    eob = " "
+}
+
+
+
+
