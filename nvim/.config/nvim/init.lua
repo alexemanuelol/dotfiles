@@ -6,6 +6,7 @@ require("config.lazy")
 
 require("general")
 require("mappings")
+require("other")
 
 -- Make background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })       -- Main text area
