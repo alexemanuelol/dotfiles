@@ -81,3 +81,10 @@ map("n", "<Leader>t3", "3gt", opts)             -- Go to tab 3
 
 -- Move current tab
 map("n", "<Leader>tm", ":tabmove<Space>", opts) -- Move tab (waits for number)
+
+-- Fix common typos
+map("n", ":Q", ":q", opts)
+map("n", ":W", ":w", opts)
+
+-- Enter netrw
+map("n", "<Leader>e", ":Explore<CR>", opts)
