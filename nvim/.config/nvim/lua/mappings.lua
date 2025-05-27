@@ -66,4 +66,18 @@ map("v", "p", '"_dP', opts)
 -- Remove trailing whitespace
 map("n", "<Leader>dw", require("utils").clean_trailing_spaces, opts)
 
+-- Create & close tabs
+map("n", "<Leader>tn", ":tabnew<CR>", opts)      -- New tab
+map("n", "<Leader>te", ":tabedit ", opts)        -- Edit file in new tab (awaits filename)
+map("n", "<Leader>tc", ":tabclose<CR>", opts)    -- Close current tab
+map("n", "<Leader>to", ":tabonly<CR>", opts)     -- Close all other tabs
 
+-- Navigate tabs
+map("n", "<Leader>tl", ":tabnext<CR>", opts)    -- Next tab
+map("n", "<Leader>th", ":tabprev<CR>", opts)    -- Previous tab
+map("n", "<Leader>t1", "1gt", opts)             -- Go to tab 1
+map("n", "<Leader>t2", "2gt", opts)             -- Go to tab 2
+map("n", "<Leader>t3", "3gt", opts)             -- Go to tab 3
+
+-- Move current tab
+map("n", "<Leader>tm", ":tabmove<Space>", opts) -- Move tab (waits for number)
