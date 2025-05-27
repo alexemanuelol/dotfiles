@@ -48,9 +48,10 @@ vim.opt.autoread = true         -- If file changed outside vim, automatically re
 -- vim.opt.columns = 120        -- Max columns
 vim.opt.colorcolumn = "80"      -- Highlight column
 vim.opt.conceallevel = 2        -- Hide text like markdown syntax (e.g. **bold**)
+vim.opt.showmode = false        -- Mode is already shown in status line
+vim.opt.foldmethod = "marker"
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
-vim.opt.foldmethod = "marker"
 
 vim.opt.backspace = {           -- Enable backspace to delete over:
     "indent",
@@ -73,6 +74,12 @@ vim.opt.fillchars = {
     eob = " "
 }
 
-
-
-
+local cursorline_au_group = vim.api.nvim_create_augroup("CursorLine", {})
+vim.api.nvim_create_autocmd({ "WinEnter" }, {
+  callback = function() vim.opt.cursorline = true end,
+  group = cursorline_au_group,
+})
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+  callback = function() vim.opt.cursorline = false end,
+  group = cursorline_au_group,
+})
