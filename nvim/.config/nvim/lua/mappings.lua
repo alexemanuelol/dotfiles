@@ -1,17 +1,69 @@
+local map = vim.keymap.set
 local opts = { noremap = false, silent = true }
 
+-- Disable arrow keys
 local modes = { "n", "i", "v" }
 local keys = { "<Up>", "<Down>", "<Left>", "<Right>" }
-
 for _, mode in ipairs(modes) do
   for _, key in ipairs(keys) do
-    vim.api.nvim_set_keymap(mode, key, "<Nop>", { noremap = true, silent = true })
+    map(mode, key, "<Nop>", { silent = true })
   end
 end
 
--- Yank & paste
-vim.keymap.set("v", "<leader>y", [["+y]], opts)
-vim.keymap.set("n", "<leader>p", [["+p]], opts)
+map("n", "<Space>", "", {})     -- Clear mapping of space
 
--- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- Set leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+map("v", "<Leader>y", [["+y]], opts)        -- Yank
+map("n", "<Leader>p", [["+p]], opts)        -- Paste
+map("n", "<Leader>N", ":enew<CR>", opts)    -- Create empty buffer
+
+-- Navigate between windows (splits)
+map("n", "<C-h>", ":wincmd h<CR>", opts)
+map("n", "<C-j>", ":wincmd j<CR>", opts)
+map("n", "<C-k>", ":wincmd k<CR>", opts)
+map("n", "<C-l>", ":wincmd l<CR>", opts)
+
+-- Resize windows (splits)
+local resize_step = 4
+map("n", "<M-C-h>", ":vertical resize -" .. resize_step .. "<CR>", opts)
+map("n", "<M-C-j>", ":resize +" .. resize_step .. "<CR>", opts)
+map("n", "<M-C-k>", ":resize -" .. resize_step .. "<CR>", opts)
+map("n", "<M-C-l>", ":vertical resize +" .. resize_step .. "<CR>", opts)
+
+-- Quickfix navigation
+map("n", "<Leader>qn", ":cnext<CR>", opts)
+map("n", "<Leader>qp", ":cprev<CR>", opts)
+
+map("n", "<Leader>sl", ":set list!<CR>", opts)              -- Toggle list
+map("n", "<Leader>sr", ":set relativenumber!<CR>", opts)    -- Toggle relative number
+map("n", "<Leader>rt", ":retab!<CR>", opts)                 -- Replace tabs with spaces
+map("n", "<Leader><Leader>", "za", opts)                    -- Toggle fold
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)              -- Clear highlights on search
+
+-- Search & Replace
+map("x", "<Leader>sr", 'y:%s%<C-r>"%%g<Left><Left>', { noremap = true })
+map("x", "<Leader>sc", 'y:%s%<C-r>"%%gc<Left><Left><Left>', { noremap = true })
+
+-- Change scroll step for Ctrl+E and Ctrl+Y
+local scroll_step = 2
+map("", "<C-e>", scroll_step .. "<C-e>", opts)
+map("", "<C-y>", scroll_step .. "<C-y>", opts)
+
+-- Move selected lines in visual mode
+map("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
+map("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
+
+-- Re-indent while in visual mode
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
+
+-- Replace visual selection without clobbering clipboard
+map("v", "p", '"_dP', opts)
+
+-- Remove trailing whitespace
+map("n", "<Leader>dw", require("utils").clean_trailing_spaces, opts)
+
+
