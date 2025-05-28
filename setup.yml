@@ -64,6 +64,7 @@
         - .config/alacritty
         - .config/hypr
         - .config/nvim
+        - .config/waybar
 
     - name: Stow dotfiles
       tags: [stow]
@@ -78,6 +79,7 @@
         - hyprland
         - nvim
         - shell_common
+        - waybar
         - zsh
 
     - name: Download and install Nerd Font
