@@ -1,9 +1,8 @@
-// vim: fdm=marker
-
 configuration {
   modes: "window,drun,run,ssh";
   font: "JetBrainsMono NF 18";
   drun-display-format: "{icon} {name}";
+  window-format: "{icon} {title}";
   show-icons: true;
 }
 
@@ -24,7 +23,7 @@ configuration {
 
 window {
   fullscreen: true;
-  padding: 35% 30%;       // you might want to ajust these to resize rofi.
+  padding: 35% 30%;         // you might want to ajust these to resize rofi.
   transparency: "real";
   background-color: @bgt;
   border-color: @t;
@@ -47,8 +46,6 @@ scrollbar {
 entry {
     placeholder: "";
 }
-
-// less interesting stuff {{{
 
 // using elements from:
 // https://github.com/bardisty/gruvbox-rofi/blob/master/gruvbox-common.rasi
@@ -129,4 +126,3 @@ textbox-prompt-sep {
     text-color: @fg;
     margin:     0 0.3em 0 0;
 }
-// }}}
