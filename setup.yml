@@ -64,6 +64,7 @@
         - .config/alacritty
         - .config/hypr
         - .config/nvim
+        - .config/rofi
         - .config/waybar
 
     - name: Stow dotfiles
@@ -78,6 +79,7 @@
         - git
         - hyprland
         - nvim
+        - rofi
         - shell_common
         - waybar
         - zsh
