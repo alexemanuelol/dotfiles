@@ -61,6 +61,8 @@
         state: directory
         recurse: yes
       with_items:
+        - .config/Dolphin
+        - .config/Kvantum
         - .config/alacritty
         - .config/hypr
         - .config/nvim
@@ -75,6 +77,8 @@
       register: stow_out
       changed_when: 'stow_out.stderr is search("LINK: ")'
       with_items:
+        - Dolphin
+        - Kvantum
         - alacritty
         - git
         - hyprland

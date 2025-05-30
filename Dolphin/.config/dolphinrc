@@ -1,0 +1,29 @@
+[CompactMode]
+UseSystemFont=false
+ViewFont=JetBrainsMono Nerd Font,9,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+
+[DetailsMode]
+UseSystemFont=false
+ViewFont=JetBrainsMono Nerd Font,9,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+
+[General]
+Version=202
+ViewFont=JetBrainsMono Nerd Font,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+ViewPropsTimestamp=2025,5,29,20,16,11.016
+
+[IconsMode]
+UseSystemFont=false
+ViewFont=JetBrainsMono Nerd Font,9,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,gdk-pixbuf-thumbnailer
+
+ [UiSettings]
+ColorScheme=gruvbox-kvantum
