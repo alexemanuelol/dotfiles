@@ -66,6 +66,8 @@
         - .config/alacritty
         - .config/hypr
         - .config/nvim
+        - .config/qt5ct
+        - .config/qt6ct
         - .config/rofi
         - .config/waybar
 
@@ -83,6 +85,8 @@
         - git
         - hyprland
         - nvim
+        - qt5ct
+        - qt6ct
         - rofi
         - shell_common
         - waybar
