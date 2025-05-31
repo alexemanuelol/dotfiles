@@ -2,6 +2,7 @@ configuration {
   modes: "window,drun,run,ssh";
   font: "JetBrainsMono NF 18";
   drun-display-format: "{icon} {name}";
+  icon-theme: "Papirus-Dark";
   window-format: "{icon} {title}";
   show-icons: true;
 }
