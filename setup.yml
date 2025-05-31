@@ -70,6 +70,7 @@
         - .config/qt6ct
         - .config/rofi
         - .config/waybar
+        - .config/wlogout
 
     - name: Stow dotfiles
       tags: [stow]
@@ -90,6 +91,7 @@
         - rofi
         - shell_common
         - waybar
+        - wlogout
         - zsh
 
     - name: Download and install Nerd Font

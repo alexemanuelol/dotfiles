@@ -1,0 +1,65 @@
+* {
+  border: none;
+  outline: none;
+}
+
+window {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 20pt;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+  background-color: alpha(#1d2021, 0.85);
+  transition: all 0.3s ease-in, color 1s ease-in;
+  box-shadow: 0 0 10px 2px transparent;
+  border-radius: 24px;
+  margin: 5px;
+  padding: 5px;
+  color: #FFFFFF;
+}
+
+button:focus {
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, .2);
+  background-size: 40%;
+  background-color: alpha(shade(#ddc7a1, 0.75), 0.7);
+}
+
+button:hover {
+  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in, color 0.1s ease-in;
+  background-size: 45%;
+  box-shadow: 0 0 15px 8px rgba(0, 0, 0, .3);
+  background-color: alpha(#ddc7a1, 0.7);
+  color: #ffffff;
+}
+
+#lock {
+  background-image: image(url("./icons/lock.svg"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout.svg"));
+}
+
+#suspend {
+  background-image: image(url("./icons/suspend.svg"));
+}
+
+#hibernate {
+  background-image: image(url("./icons/hibernate.svg"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/shutdown.svg"));
+}
+
+#reboot {
+  background-image: image(url("./icons/reboot.svg"));
+}
