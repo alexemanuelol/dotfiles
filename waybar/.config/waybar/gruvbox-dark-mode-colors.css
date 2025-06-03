@@ -1,0 +1,36 @@
+/* Gruvbox Dark mode */
+@define-color gruvbox_bg      #282828;
+@define-color gruvbox_bg0     #282828;
+@define-color gruvbox_bg1     #3C3836;
+@define-color gruvbox_bg2     #504945;
+@define-color gruvbox_bg3     #665C54;
+@define-color gruvbox_bg4     #7C6F64;
+@define-color gruvbox_bg0_h   #1D2021;
+@define-color gruvbox_bg0_s   #32302F;
+
+@define-color gruvbox_fg      #EBDBB2;
+@define-color gruvbox_fg0     #FBF1C7;
+@define-color gruvbox_fg1     #EBDBB2;
+@define-color gruvbox_fg2     #D5C4A1;
+@define-color gruvbox_fg3     #BDAE93;
+@define-color gruvbox_fg4     #A89984;
+
+@define-color gruvbox_red0    #CC241D;
+@define-color gruvbox_green0  #98971A;
+@define-color gruvbox_yellow0 #D79921;
+@define-color gruvbox_blue0   #458588;
+@define-color gruvbox_purple0 #B16286;
+@define-color gruvbox_aqua0   #689D6A;
+@define-color gruvbox_gray0   #A89984;
+@define-color gruvbox_orange0 #D65D0E;
+
+@define-color gruvbox_red1    #FB4934;
+@define-color gruvbox_green1  #B8BB26;
+@define-color gruvbox_yellow1 #FABD2F;
+@define-color gruvbox_blue1   #83A598;
+@define-color gruvbox_purple1 #D3869B;
+@define-color gruvbox_aqua1   #8EC07C;
+@define-color gruvbox_gray1   #928374;
+@define-color gruvbox_orange1 #FE8019;
+
+@define-color gruvbox_gray2   #928374;
