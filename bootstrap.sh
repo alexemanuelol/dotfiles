@@ -20,6 +20,8 @@ sudo pacman -S --noconfirm fastfetch wl-clipboard interception-tools interceptio
 # sudo vim /etc/default/grub -> GRUB_CMDLINE_LINUX="nvidia_drm.modeset=1 rd.driver.blacklist=nouveau modprob.blacklist=nouveau"
 #
 # TODO: Install
+# pyenv through curl
+#
 # waybar, hyprland, uwsm, firefox neovim, hyprpaper, ly, rofi, dolphin, htop, qt5ct, qt6ct, qt5-wayland, qt6-wayland,
 # ranger, hyprlock, papirus-icon-theme, hyprpicker, hypridle, pavucontrol, network-manager-applet, btop, blueman, bluez,
 # bluez-utils, swaync

@@ -48,3 +48,10 @@ export EDITOR="nvim"
 alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
+alias mkenv="python -m venv .venv"
+alias actenv="source .venv/bin/activate"
+
+# pyenv stuff
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
