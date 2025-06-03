@@ -65,6 +65,7 @@
         - .config/Kvantum
         - .config/alacritty
         - .config/btop
+        - .config/fastfetch
         - .config/hypr
         - .config/nvim
         - .config/qt5ct
@@ -85,6 +86,7 @@
         - Kvantum
         - alacritty
         - btop
+        - fastfetch
         - git
         - hyprland
         - nvim
