@@ -64,6 +64,7 @@
         - .config/Dolphin
         - .config/Kvantum
         - .config/alacritty
+        - .config/btop
         - .config/hypr
         - .config/nvim
         - .config/qt5ct
@@ -83,6 +84,7 @@
         - Dolphin
         - Kvantum
         - alacritty
+        - btop
         - git
         - hyprland
         - nvim
