@@ -13,6 +13,9 @@ NC='\033[0m' # No Color
 
 DOTFILES_DIR="$HOME/.dotfiles"
 
+read -p "Install NVIDIA drivers? [Y/n]" install_nvidia
+install_nvidia=${install_nvidia:-Y}
+
 # Packages
 
 ESSENTIAL_PACKAGES=(
@@ -382,36 +385,37 @@ post_install() {
     local modprobe_file="/etc/modprobe.d/nvidia.conf"
     local option_line="options nvidia_drm modeset=1"
 
-    if ! grep -Fxq "$option_line" "$modprobe_file" 2>/dev/null; then
-        echo "$option_line" | sudo tee -a "$modprobe_file"
-        info "Added '$option_line' to $modprobe_file"
-    else
-        info "'$option_line' already present in $modprobe_file"
+    if [[ "$install_nvidia" == [Yy] ]]; then
+        if ! grep -Fxq "$option_line" "$modprobe_file" 2>/dev/null; then
+            echo "$option_line" | sudo tee -a "$modprobe_file"
+            info "Added '$option_line' to $modprobe_file"
+        else
+            info "'$option_line' already present in $modprobe_file"
+        fi
     fi
 
     # Update MODULES in /etc/mkinitcpio.conf
     local mkinitcpio_file="/etc/mkinitcpio.conf"
     local desired_modules="MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
 
-    # Check if MODULES line is already correct
-    if ! grep -Fxq "$desired_modules" "$mkinitcpio_file"; then
-        # Replace existing MODULES line or add if missing
-        if grep -q "^MODULES=" "$mkinitcpio_file"; then
-            sudo sed -i "s|^MODULES=.*|$desired_modules|" "$mkinitcpio_file"
-            info "Replaced MODULES line in $mkinitcpio_file"
+    if [[ "$install_nvidia" == [Yy] ]]; then
+        # Check if MODULES line is already correct
+        if ! grep -Fxq "$desired_modules" "$mkinitcpio_file"; then
+            # Replace existing MODULES line or add if missing
+            if grep -q "^MODULES=" "$mkinitcpio_file"; then
+                sudo sed -i "s|^MODULES=.*|$desired_modules|" "$mkinitcpio_file"
+                info "Replaced MODULES line in $mkinitcpio_file"
+            else
+                echo "$desired_modules" | sudo tee -a "$mkinitcpio_file"
+                info "Added MODULES line to $mkinitcpio_file"
+            fi
+
+            # Regenerate initramfs
+            sudo mkinitcpio -P && info "Regenerated initramfs"
         else
-            echo "$desired_modules" | sudo tee -a "$mkinitcpio_file"
-            info "Added MODULES line to $mkinitcpio_file"
+            info "MODULES line already set correctly in $mkinitcpio_file"
         fi
-
-        # Regenerate initramfs
-        sudo mkinitcpio -P && info "Regenerated initramfs"
-    else
-        info "MODULES line already set correctly in $mkinitcpio_file"
     fi
-
-
-
 }
 
 main() {
@@ -420,7 +424,11 @@ main() {
     check_root_and_sudo
     update_system
     install_packages ESSENTIAL_PACKAGES
+
+if [[ "$install_nvidia" == [Yy] ]]; then
     install_packages NVIDIA_PACKAGES
+fi
+
     install_packages OTHER_PACKAGES
     install_aur_helper_yay
     install_aur_packages AUR_PACKAGES
