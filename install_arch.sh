@@ -243,7 +243,7 @@ install_aur_packages() {
 stow_dotfiles() {
 # {{{
     log "Stowing dotfiles..."
-    for module in "${DOTFILE_CONFIGS_TEST[@]}"; do
+    for module in "${DOTFILE_CONFIGS[@]}"; do
         stow --dir="$DOTFILES_DIR" --target="$HOME" "$module" || error "Failed to stow $module"
         info "Stowed $module"
     done
@@ -253,7 +253,7 @@ stow_dotfiles() {
 unstow_dotfiles() {
 # {{{
     log "Stowing dotfiles..."
-    for module in "${DOTFILE_CONFIGS_TEST[@]}"; do
+    for module in "${DOTFILE_CONFIGS[@]}"; do
         stow -D --dir="$DOTFILES_DIR" --target="$HOME" "$module" || error "Failed to unstow $module"
         info "Unstowed $module"
     done
