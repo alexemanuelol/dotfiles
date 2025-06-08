@@ -109,6 +109,7 @@ DOTFILE_CONFIGS=(
     "Dolphin"
     "Kvantum"
     "alacritty"
+    "bash"
     "btop"
     "fastfetch"
     "git"
