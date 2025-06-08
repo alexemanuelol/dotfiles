@@ -118,6 +118,7 @@ DOTFILE_CONFIGS=(
     "qt6ct"
     "rofi"
     "shell_common"
+    "wallpapers"
     "waybar"
     "wlogout"
     "zsh"
