@@ -360,24 +360,37 @@ set_default_shell_to_zsh() {
 
 enable_services() {
 # {{{
-    log "Enable service: ly"
-    sudo systemctl enable ly.service
+    enable_if_not_enabled() {
+        local service="$1"
+        local user_flag="$2"
 
-    log "Enable service: pipewire"
-    systemctl --user enable pipewire.service
+        if [ "$user_flag" = "--user" ]; then
+            if ! systemctl --user is-enabled "$service" &>/dev/null; then
+                log "Enable service: $service"
+                systemctl --user enable "$service"
+            else
+                log "Service already enabled: $service"
+            fi
+        else
+            if ! systemctl is-enabled "$service" &>/dev/null; then
+                log "Enable service: $service"
+                sudo systemctl enable "$service"
+            else
+                log "Service already enabled: $service"
+            fi
+        fi
+    }
 
-    log "Enable service: wireplumber"
-    systemctl --user enable wireplumber.service
-
-    log "Enable service: bluetooth"
-    systemctl enable bluetooth.service
-
-    log "Enable service: NetworkManager"
-    systemctl enable NetworkManager.service
+    enable_if_not_enabled ly.service ""
+    enable_if_not_enabled pipewire.service "--user"
+    enable_if_not_enabled wireplumber.service "--user"
+    enable_if_not_enabled bluetooth.service ""
+    enable_if_not_enabled NetworkManager.service ""
 }
 # }}}
 
 post_install() {
+# {{{
     log "Running post-installation tasks..."
 
     chmod +x "$DOTFILES_DIR/hyprland/.config/hypr/scripts/power_action.sh"
@@ -419,6 +432,7 @@ post_install() {
         fi
     fi
 }
+# }}}
 
 main() {
     info "Starting Arch Linux dotfiles installation..."
