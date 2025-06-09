@@ -3,6 +3,9 @@
 alias ls='LC_COLLATE=C ls --color=auto --group-directories-first'
 alias ll='LC_COLLATE=C ls -lah --color=auto --group-directories-first'
 
+alias eza='eza --icons=auto --color=auto --group-directories-first'
+alias ee='eza -lahB --git --git-repos --icons=auto --color=auto --group-directories-first'
+
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."

@@ -53,6 +53,7 @@ OTHER_PACKAGES=(
     "btop"
     "discord"
     "dolphin"
+    "eza"
     "fastfetch"
     "firefox"
     "gimp"
