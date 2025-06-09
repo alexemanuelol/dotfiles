@@ -46,6 +46,7 @@ OTHER_PACKAGES=(
 # {{{
     "alacritty"
     "archlinux-xdg-menu"
+    "bat"
     "blueman"
     "bluez"
     "bluez-utils"
