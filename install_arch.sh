@@ -428,6 +428,44 @@ setup_nvm() {
 }
 # }}}
 
+setup_rust() {
+# {{{
+    if command -v rustc &>/dev/null; then
+        info "Rust is already installed. Skipping installation..."
+        rustup self update
+    else
+        info "Rust not found. Installing Rust using rustup..."
+        curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+        info "Rust was installed successfully."
+    fi
+
+    zshrc="$HOME/.zshrc"
+
+    ensure_line_in_zshrc() {
+        local line="$1"
+        grep -Fxq "$line" "$zshrc" || echo "$line" >> "$zshrc"
+    }
+
+    # Ensure Rust environment setup is in .zshrc
+    ensure_line_in_zshrc 'export PATH="$HOME/.cargo/bin:$PATH"'
+
+    # Source Rust for current session
+    export PATH="$HOME/.cargo/bin:$PATH"
+
+    if command -v rustup &>/dev/null; then
+        rustup install stable
+        rustup default stable
+    fi
+
+    # Confirm installation
+    if command -v rustc &>/dev/null; then
+        info "Rust version $(rustc --version) is now available."
+    else
+        error "Rust installation failed or environment not set correctly."
+    fi
+}
+# }}}
+
 enable_services() {
 # {{{
     enable_if_not_enabled() {
@@ -530,6 +568,7 @@ fi
     set_default_shell_to_zsh
     setup_pyenv
     setup_nvm
+    setup_rust
 
     # post install
     xdg-user-dirs-update
