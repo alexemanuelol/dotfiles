@@ -402,17 +402,19 @@ setup_pyenv() {
 
 setup_nvm() {
 # {{{
-    if command -v nvm &>/dev/null; then
+    NVM_DIR="$HOME/.config/nvm"
+
+    if [ -s "$NVM_DIR/nvm.sh" ]; then
+        # Source nvm so the command is available in this shell session
+        \. "$NVM_DIR/nvm.sh"
         info "nvm is already installed. Skipping installation..."
     else
         info "nvm not found. Installing nvm..."
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
         info "nvm $NVM_VERSION was installed successfully."
+        # Source nvm after install to use it immediately
+        \. "$NVM_DIR/nvm.sh"
     fi
-
-    # Source nvm for current session
-    export NVM_DIR="$HOME/.config/nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
     # Install latest Node.js if missing
     if nvm ls node >/dev/null 2>&1; then
