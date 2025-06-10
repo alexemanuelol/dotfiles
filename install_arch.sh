@@ -81,6 +81,7 @@ OTHER_PACKAGES=(
     "qt6ct"
     "ranger"
     "rofi"
+    "speedcrunch"
     "swaync"
     "tk"
     "vlc"
