@@ -372,6 +372,22 @@ setup_pyenv() {
         info "pyenv was installed successfully."
     fi
 
+    # Ensure pyenv config is in .zshrc
+    zshrc="$HOME/.zshrc"
+
+    ensure_line_in_zshrc() {
+        local line="$1"
+        grep -Fxq "$line" "$zshrc" || echo "$line" >> "$zshrc"
+    }
+
+    ensure_line_in_zshrc 'export PYENV_ROOT="$HOME/.pyenv"'
+    ensure_line_in_zshrc '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"'
+    ensure_line_in_zshrc 'eval "$(pyenv init - zsh)"'
+
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$("$PYENV_ROOT/bin/pyenv" init -)"
+
     # Check if any Python 3 version is already installed
     if pyenv versions --bare | grep -q '^3\.'; then
         info "A Python 3 version is already installed with pyenv."
