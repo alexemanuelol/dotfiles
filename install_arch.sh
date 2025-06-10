@@ -67,6 +67,7 @@ OTHER_PACKAGES=(
     "ly"
     "neovim"
     "network-manager-applet"
+    "obsidian"
     "openssl"
     "papirus-icon-theme"
     "pavucontrol"
@@ -361,6 +362,29 @@ set_default_shell_to_zsh() {
 }
 # }}}
 
+setup_pyenv() {
+# {{{
+    if command -v pyenv &>/dev/null; then
+        info "pyenv is already installed. Skipping installation..."
+    else
+        info "pyenv not found. Installing pyenv using pyenv-installer..."
+        curl -fsSL https://pyenv.run | bash
+        info "pyenv was installed successfully."
+    fi
+
+    # Check if any Python 3 version is already installed
+    if pyenv versions --bare | grep -q '^3\.'; then
+        info "A Python 3 version is already installed with pyenv."
+    else
+        info "Installing latest Python 3 via pyenv..."
+        pyenv install 3
+        pyenv global 3
+        info "Python $(python --version) has been installed and set as global."
+    fi
+}
+# }}}
+
+
 enable_services() {
 # {{{
     enable_if_not_enabled() {
@@ -461,6 +485,7 @@ fi
 
     install_oh_my_zsh_and_plugins
     set_default_shell_to_zsh
+    setup_pyenv
 
     # post install
     xdg-user-dirs-update
