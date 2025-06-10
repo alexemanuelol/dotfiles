@@ -12,6 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 DOTFILES_DIR="$HOME/.dotfiles"
+NVM_VERSION="v0.40.3"
 
 read -p "Install NVIDIA drivers? [Y/n]" install_nvidia
 install_nvidia=${install_nvidia:-Y}
@@ -372,7 +373,6 @@ setup_pyenv() {
         info "pyenv was installed successfully."
     fi
 
-    # Ensure pyenv config is in .zshrc
     zshrc="$HOME/.zshrc"
 
     ensure_line_in_zshrc() {
@@ -400,6 +400,31 @@ setup_pyenv() {
 }
 # }}}
 
+setup_nvm() {
+# {{{
+    if command -v nvm &>/dev/null; then
+        info "nvm is already installed. Skipping installation..."
+    else
+        info "nvm not found. Installing nvm..."
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
+        info "nvm $NVM_VERSION was installed successfully."
+    fi
+
+    # Source nvm for current session
+    export NVM_DIR="$HOME/.config/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+    # Install latest Node.js if missing
+    if nvm ls node >/dev/null 2>&1; then
+        info "Node.js is already installed via nvm."
+    else
+        info "Installing latest Node.js via nvm..."
+        nvm install node
+        nvm alias default node
+        info "Node.js version $(node --version) and npm version $(npm --version) installed and set as default."
+    fi
+}
+# }}}
 
 enable_services() {
 # {{{
@@ -502,6 +527,7 @@ fi
     install_oh_my_zsh_and_plugins
     set_default_shell_to_zsh
     setup_pyenv
+    setup_nvm
 
     # post install
     xdg-user-dirs-update
