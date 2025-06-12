@@ -1,8 +1,6 @@
 [user]
     name = Alexander Emanuelsson
     email = alexander.emanuelsson94@gmail.com
-    #email = alexander.emanmuelsson@mmm.com
-    username = alexemanuelol
 [core]
     editor = vim # User vim as default editor
     pager = less # Use less when viewing diff/ log
@@ -11,9 +9,6 @@
     excludesfile = ~/.gitignore_global
 [credential]
     helper = store # Less secure...
-[github]
-    user = alexemanuelol # GitHub username
-    token = TOKEN # GitHub Token
 [web]
     browser = firefox # web browser
 [gui]
@@ -103,3 +98,16 @@
     rsth = reset --hard # Reset the staging area and the working directory to match the most recent commit.
     undo = reset --soft HEAD^ # Undo the latest commit but keep the changes
     unstage = reset HEAD # Remove added files from staging area
+
+
+# Other git-related tools
+
+[github]
+    user = alexemanuelol # GitHub username
+    token = TOKEN # GitHub Token
+
+
+# Includes (Placed at bottom to overwrite)
+
+[include]
+    path = ~/.gitconfig_local
