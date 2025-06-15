@@ -184,7 +184,7 @@
     eol = lf
     safecrlf = true
     autocrlf = input
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/.gitignore_global
     editor = nvim
     commentChar = "#"
     commentString = "//"
@@ -290,4 +290,4 @@
 # Includes (Placed at bottom to overwrite)
 
 [include]
-    path = ~/.gitconfig_local
+    path = ~/.config/git/.config_local
