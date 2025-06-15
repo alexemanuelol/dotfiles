@@ -6,16 +6,19 @@
 [alias]
     # Useful macros
     aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+    anychanges = !sh -c 'git fetch' && git log --oneline HEAD..origin/$1
     cfg = config --list
     cfge = config edit --global
+    contri = shortlog -s -- # Commits per contributor
     dt = difftool
     find = "!f() { git log -S ${1} --source --all; }; f"
+    howmany = "!sh -c 'git log -a --pretty=oneline | wc -l'"
+    initrepo = !git init && git add . && git commit -m \"initial commit\"
+    latest = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
     remotes = remote -v
     rst = reset --hard origin/master
     uncommit = reset --soft HEAD^
     undo = checkout .
-    who = shortlog -s -- # Commits per contributor
-    whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
 
     # General
     a = add
@@ -52,6 +55,7 @@
     st = stash
     stl = stash list
     stp = stash pop
+    t = tag -l
 
 [blame]
     coloring = highlightRecent
