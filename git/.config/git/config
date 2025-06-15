@@ -4,53 +4,54 @@
     detachedHead = false
 
 [alias]
-    aliases = !git config -l | grep alias | cut -c 7- # Print all aliases
+    # Useful macros
+    aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+    cfg = config --list
+    cfge = config edit --global
+    dt = difftool
+    find = "!f() { git log -S ${1} --source --all; }; f"
+    remotes = remote -v
+    rst = reset --hard origin/master
+    uncommit = reset --soft HEAD^
+    undo = checkout .
+    who = shortlog -s -- # Commits per contributor
+    whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
+
+    # General
     a = add
-    aa = add --all
+    aa = add -A
     b = branch
-    bd = branch -d # Delete merged branch
-    bD = branch -D # Force delete branch
+    ba = branch -a
+    bi = bisect
     c = commit
-    ca = commit -a
-    cm = commit -m
-    cma = commit -ma
-    cam = commit --amend
-    camn = commit --amend --no-edit
+    ca = commit --amend
+    can = commit --amend --no-edit
+    cc = clone --recurse-submodules -j8
+    cl = clean -xdf
     co = checkout
     cob = checkout -b
     com = checkout master
-    cor = checkout .
-    cfg = config --list
-    cl = clone
-    cls = clone --recurse-submodules -j8 # Clone all submodules as well
     d = diff
-    dc = diff -C --color-words
-    dt = difftool
-    f = fetch --all
+    dn = "!f() { git diff HEAD~${1:-1} HEAD; }; f" # Check diff between latest and n commits back
+    f = fetch
+    g = grep
+    i = init
+    l = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
     lg = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
-    lgt = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cD) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
     lgg = lg --graph
+    lgt = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cD) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
     lgtg = lgt --graph
     m = merge
     pl = pull
     plom = pull origin/master
     ps = push
     psf = push --force-with-lease
-    rb = rebase
-    rbom = rebase origin/master
-    remotes = remote -v
+    r = rebase
     s = status
+    ss = status -s
     st = stash
-    stp = stash pop
     stl = stash list
-    who = shortlog -s -- # Commits per contributor
-    whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
-    camnpsf = camn && git psf # amend and force push
-    cln = clean -xdff # Cleans the repository
-    rsth = reset --hard # Reset the staging area and the working directory to match the most recent commit.
-    undo = reset --soft HEAD^ # Undo the latest commit but keep the changes
-    unstage = reset HEAD # Remove added files from staging area
-
+    stp = stash pop
 
 [blame]
     coloring = highlightRecent
@@ -267,6 +268,9 @@
 
 [submodule]
     recurse = true
+
+[tag]
+    sort = -creatordate
 
 [user]
     name = Alexander Emanuelsson
