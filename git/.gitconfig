@@ -1,98 +1,50 @@
-[user]
-    name = Alexander Emanuelsson
-    email = alexander.emanuelsson94@gmail.com
-[core]
-    editor = vim # User vim as default editor
-    pager = less # Use less when viewing diff/ log
-    autocrlf = input
-    whitespace = fix,trailing-space,cr-at-eol
-    excludesfile = ~/.gitignore_global
-[credential]
-    helper = store # Less secure...
-[web]
-    browser = firefox # web browser
-[gui]
-    encoding = utf-8
-[color]
-    ui = auto
-[color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    plain = white dim
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
-[diff]
-    tool = vimdiff
-[push]
-    default = current # Push current branch to update a branch with the same name on the receiving end
+[advice]
+    addEmptyPathspec = false
+    statusHint = false
+    detachedHead = false
+
 [alias]
     aliases = !git config -l | grep alias | cut -c 7- # Print all aliases
-    ##########
     a = add
     aa = add --all
-    ##########
     b = branch
     bd = branch -d # Delete merged branch
     bD = branch -D # Force delete branch
-    ##########
     c = commit
     ca = commit -a
     cm = commit -m
     cma = commit -ma
     cam = commit --amend
     camn = commit --amend --no-edit
-    ##########
     co = checkout
     cob = checkout -b
     com = checkout master
     cor = checkout .
-    ##########
     cfg = config --list
-    ##########
     cl = clone
     cls = clone --recurse-submodules -j8 # Clone all submodules as well
-    ##########
     d = diff
     dc = diff -C --color-words
     dt = difftool
-    ##########
     f = fetch --all
-    ##########
     lg = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
     lgt = log --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cD) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
     lgg = lg --graph
     lgtg = lgt --graph
-    ##########
     m = merge
-    ##########
     pl = pull
     plom = pull origin/master
-    ##########
     ps = push
     psf = push --force-with-lease
-    ##########
     rb = rebase
     rbom = rebase origin/master
-    ##########
     remotes = remote -v
-    ##########
     s = status
     st = stash
     stp = stash pop
     stl = stash list
-    ##########
     who = shortlog -s -- # Commits per contributor
     whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' - # Who did latest commit
-    ##########
     camnpsf = camn && git psf # amend and force push
     cln = clean -xdff # Cleans the repository
     rsth = reset --hard # Reset the staging area and the working directory to match the most recent commit.
@@ -100,11 +52,239 @@
     unstage = reset HEAD # Remove added files from staging area
 
 
+[blame]
+    coloring = highlightRecent
+    date = default
+
+[branch]
+	autosetupmerge = true
+    autosetuprebase = true
+    sort = refname
+
+[checkout]
+    defaultRemote = origin
+    workers = 0
+    thresholdForParallelism = 100
+
+[clone]
+    defaultRemoteName = origin
+
+[color]
+    advice = auto
+    branch = auto
+    diff = auto
+    grep = auto
+    interactive = auto
+    pager = true
+    push = auto
+    remote = auto
+    showBranch = auto
+    status = auto
+    transport = auto
+    ui = auto
+
+[color "advice"]
+    hint = yellow bold
+
+[color "blame"]
+    highlightRecent = \
+        "#0066FF",12 month ago,\
+        "#0088FF",11 month ago,\
+        "#00AAFF",10 month ago,\
+        "#00CCFF",9 month ago,\
+        "#00EEFF",8 month ago,\
+        "#00FFCC",7 month ago,\
+        "#00FF99",6 month ago,\
+        "#00FF66",5 month ago,\
+        "#00FF33",4 month ago,\
+        "#00FF00",3 month ago,\
+        "#33FF00",2 month ago,\
+        "#66FF00",1 month ago,\
+        "#99FF00",3 week ago,\
+        "#CCFF00",2 week ago,\
+        "#FFFF00",1 week ago,\
+        "#FFCC00",3 day ago,\
+        "#FF9900",1 day ago,\
+        "#FF6600",12 hour ago,\
+        "#FF3300",6 hour ago,\
+        "#FF0000",3 hour ago,\
+        "#FF0000"
+    repeatedLines = red bold
+
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+    upstream = red bold
+    plain = white bold
+
+[color "diff"]
+    context = white dim
+    meta = yellow bold
+    frag = magenta bold
+    func = yellow bold
+    old = red bold
+    new = green bold
+    commit = cyan bold
+    whitespace = red reverse
+
+[color "decorate"]
+    branch = green bold
+    remoteBranch = red bold
+    tag = yellow bold
+    stash = cyan bold
+    HEAD = blue bold
+
+[color "grep"]
+    context = bold
+    filename = yellow bold
+    function = red bold
+    lineNumber = cyan bold
+    column = cyan bold
+    match = green bold
+    matchContext = green bold
+    matchSelected = green bold
+    selected = bold
+    separator = bold
+
+[color "interactive"]
+    prompt = green bold
+    header = bold bold
+    help = yellow bold
+    error = red bold
+
+[color "push"]
+    error = red bold
+
+[color "remote"]
+    hint = yellow bold
+    warning = yellow bold
+    success = green bold
+    error = red bold
+
+[color "status"]
+    header = bold
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+    branch = cyan bold
+    nobranch = red bold
+    localBranch = green
+    remoteBranch = cyan
+    unmerged = red bold
+
+[color "transport"]
+    rejected = red bold
+
+[core]
+    fileMode = true
+    ignoreCase = false
+    fsmonitor = true # windows & macos
+    quotePath = true
+    eol = lf
+    safecrlf = true
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+    editor = nvim
+    commentChar = "#"
+    commentString = "//"
+    pager = delta
+    whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4#,cr-at-eol # for windows
+    preloadIndex = true # windows
+    sparseCheckoutCone = true
+
+[credential]
+    helper = manager # GCM (Git Credential Manager)
+    username = alexemanuelol
+
+[diff]
+    submodule = log
+    algorithm = myers #minimal,patience,histogram
+    colorMoved = true
+    tool = vimdiff
+    guitool = meld
+
+[difftool]
+    prompt = false
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+    parallel = 0
+
+[grep]
+    lineNumber = true
+    threads = 0
+    fullName = true
+
+[gui]
+    encoding = utf-8
+
+[help]
+    browser = firefox
+
+[index]
+    threads = 0
+
+[init]
+    defaultBranch = master
+
+[interactive]
+    diffFilter = delta --color-only
+
+[log]
+    decorate = auto
+
+[merge]
+    conflictStyle = diff3
+    log = true
+    tool = vimdiff
+    guitool = meld
+
+[pull]
+    rebase = true
+
+[push]
+    default = current
+    followTags = true
+
+[rebase]
+    autoStash = true
+
+[remote]
+    pushDefault = origin
+
+[rerere]
+    enabled = true
+
+[sequence]
+    editor = nvim
+
+[status]
+    showStash = true
+    submoduleSummary = true
+
+[submodule]
+    recurse = true
+
+[user]
+    name = Alexander Emanuelsson
+    email = alexander.emanuelsson94@gmail.com
+
+[web]
+    browser = firefox
+
+
 # Other git-related tools
 
 [github]
     user = alexemanuelol # GitHub username
     token = TOKEN # GitHub Token
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
 
 
 # Includes (Placed at bottom to overwrite)
