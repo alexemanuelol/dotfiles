@@ -59,6 +59,7 @@ OTHER_PACKAGES=(
     "fastfetch"
     "firefox"
     "gimp"
+    "git-delta"
     "hypridle"
     "hyprland"
     "hyprlock"
