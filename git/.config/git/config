@@ -63,7 +63,7 @@
 
 [branch]
 	autosetupmerge = true
-    autosetuprebase = true
+    autosetuprebase = never
     sort = refname
 
 [checkout]
