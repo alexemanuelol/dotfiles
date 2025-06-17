@@ -197,6 +197,7 @@
     whitespace = space-before-tab,tab-in-indent,trailing-space,tabwidth=4#,cr-at-eol # for windows
     preloadIndex = true # windows
     sparseCheckoutCone = true
+    logAllRefUpdates = true
 
 [credential]
     helper = manager # GCM (Git Credential Manager)
@@ -272,6 +273,7 @@
 
 [submodule]
     recurse = true
+    propagateBranches = true
 
 [tag]
     sort = -creatordate
