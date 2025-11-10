@@ -25,6 +25,7 @@ ESSENTIAL_PACKAGES=(
     "base-devel"
     "curl"
     "git"
+    "less"
     "linux-headers"
     "networkmanager"
     "stow"
@@ -403,7 +404,7 @@ setup_pyenv() {
 
 setup_nvm() {
 # {{{
-    NVM_DIR="$HOME/.config/nvm"
+    NVM_DIR="$HOME/.nvm"
 
     if [ -s "$NVM_DIR/nvm.sh" ]; then
         # Source nvm so the command is available in this shell session
