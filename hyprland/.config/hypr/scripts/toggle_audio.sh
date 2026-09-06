@@ -4,9 +4,12 @@
 SPEAKER_REGEX='(\d+)\.\sUSB Audio Speakers'
 HEADSET_REGEX='(\d+)\.\sHyperX Cloud Alpha Wireless Analog Stereo'
 
-# Extract IDs
-SPEAKER_ID=$(wpctl status | grep -Po "$SPEAKER_REGEX" | grep -Po '^\d+')
-HEADSET_ID=$(wpctl status | grep -Po "$HEADSET_REGEX" | grep -Po '^\d+')
+# Extract IDs (take only the first match in case the name appears twice)
+SPEAKER_ID=$(wpctl status | grep -Po "$SPEAKER_REGEX" | grep -Po '^\d+' | head -n1)
+HEADSET_ID=$(wpctl status | grep -Po "$HEADSET_REGEX" | grep -Po '^\d+' | head -n1)
+
+echo "$SPEAKER_ID"
+echo "$HEADSET_ID"
 
 # Get current default sink ID from wpctl inspect (handles "id 45, type ..." format)
 DEFAULT_ID=$(wpctl inspect @DEFAULT_AUDIO_SINK@ | grep -Po '^id\s+\K\d+')
